@@ -116,13 +116,17 @@ export class ReportTemplateComponent implements OnChanges {
     @Input('inputData') inputData!: any
     tableData!: IListOfData
     currentDate: any = new Date()
+    totalDiscount: number = 0;
 
     constructor() {
-
+        
     }
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['inputData']) {
             console.log("after detect change :", this.inputData)
+           
+           
+          
             if (this.inputData?.result) {
                 this.setDataIntoTable(this.inputData)
             } else if (this.inputData.error != null) {
@@ -209,6 +213,7 @@ export class ReportTemplateComponent implements OnChanges {
             }
 
         } else if (inputData.result && inputData?.reportType == "Invoice Reprint") {
+            this.calculateTotalDiscount();
             this.tableData = {
                 title: "invoice",
                 tableHeader: [
@@ -230,6 +235,7 @@ export class ReportTemplateComponent implements OnChanges {
                 }),
                 error: null
             }
+            console.log("tableData ",this.inputData?.result)
         } else if (inputData.result && inputData?.reportType == "Sales Report") {
             this.tableData = {
                 title: "sales",
@@ -483,4 +489,11 @@ export class ReportTemplateComponent implements OnChanges {
         const date = moment(new Date(this.inputData?.result?.[0].confirmInvoiceOBJ?.date)).format("DD/MM/YYYY HH:mm:ss");
         return date.split(" ")[1]
     }
+    calculateTotalDiscount() {
+        if (this.inputData?.result) {
+          this.totalDiscount = this.inputData.result.reduce((acc: number, item: any) => {
+            return acc + (item.discount || 0);
+          }, 0);
+        }
+      }
 }
