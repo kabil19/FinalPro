@@ -1,0 +1,49 @@
+<mat-dialog-content>
+<form [formGroup]="emailForm" class="overflow-hidden flex flex-col" (ngSubmit)="sendEmail()">
+    <!-- <mat-form-field class="w-full"> 
+        <mat-label>Customer</mat-label>
+        <input type="text" placeholder="emailId" matInput formControlName="emailId"
+            [formControl]="customerControl" [matAutocomplete]="auto">
+        <mat-error *ngIf="emailForm.get('emailId')?.hasError">This field is required!</mat-error>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option class="font-semibold font-mono" *ngFor="let aCust of filterOptions | async" [value]="aCust.email" (focus)="setMail(aCust.email)">
+                {{aCust.custName}} | {{aCust.email}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field> -->
+    <mat-form-field class="w-[100%]">
+        <mat-label> Email Id </mat-label>
+        <input readonly matInput formControlName="emailId" type="text" class="" />
+        <mat-error *ngIf="emailForm.get('emailId')?.errors">This field is required!</mat-error>
+        <mat-error *ngIf="">This field is required!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-[100%]">
+        <mat-label> Title </mat-label>
+        <input matInput formControlName="title" type="text" class="" />
+        <mat-error *ngIf="emailForm.get('title')?.errors">This field is required!</mat-error>
+        <mat-error *ngIf="">This field is required!</mat-error>
+    </mat-form-field>
+   
+    <mat-form-field class="w-[100%]">
+        <mat-label> Subject </mat-label>
+        <input matInput formControlName="subject" type="text" class="" />
+        <mat-error *ngIf="emailForm.get('subject')?.errors">This field is required!</mat-error>
+        <mat-error *ngIf="">This field is required!</mat-error>
+    </mat-form-field>
+   
+  
+    
+    <div class="w-full flex flex-col justify-center items-center">
+        <button mat-stroked-button class="relative w-[95%] h-[48px] bg-blue-500 text-white rounded flex items-center justify-center" (click)="sendEmail()" [disabled]="isLoading">
+            <span *ngIf="isLoading" class="">
+              <div class="w-4 h-4 border-2 border-t-2 border-black border-solid border-r-[transparent] rounded-full animate-spin"></div>
+            </span>
+            <span *ngIf="!isLoading">
+                Send an email
+            </span>
+          </button>
+    </div>
+</form>
+
+</mat-dialog-content>

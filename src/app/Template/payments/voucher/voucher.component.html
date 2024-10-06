@@ -1,0 +1,94 @@
+<ng-container class="grid">
+    <!-- InvoiceTemplate -->
+    <div class="">
+        <div class="w-full h-auto p-[16px] relative">
+            <div class="flex flex-row mb-[25px] gap-[8px] border-b-2 border-black">
+                <div class="w-[80px] h-[80px]">
+                    <img src="../../../assets/logo/logo2.png" alt="company-logo" class="w-full h-full object-contain" />
+                </div>
+                <div class="h-[101px] flex flex-col mb-[10px]">
+                    <div class="uppercase text-[36px] font-thin">COMFORT LINEN COMPANY (PVT) LTD</div>
+                    <div class="text-[20px] pb-[5px]">Manufacturer of quilt & bed Linen</div>
+                </div>
+
+            </div>
+            <div class="text-right">
+                <h2 class="text-[20px] uppercase">Voucher</h2>
+            </div>
+
+            <div class="flex items-center justify-between mb-[12px]">
+                <div class="flex flex-col gap-y-[4px]">
+                    <div>
+                        <p class="text-[14px]">Supplied by :</p>
+                        <h1 class="text-[18px] font-semibold">{{this.data.confirmPurchaseOBJ.vendorOBJ.vendorName}}</h1>
+                    </div>
+                    <div>
+                        <p class="text-[14px]">{{this.data.confirmPurchaseOBJ.vendorOBJ.contact}}</p>
+                        <p class="text-[14px]">{{this.data.confirmPurchaseOBJ.vendorOBJ.address}}</p>
+                        <p class="text-[14px]">{{this.data.confirmPurchaseOBJ.vendorOBJ.email}}</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-y-[20px] text-right">
+                    <div>
+                        <p class="text-[14px]">Date:</p>
+                        <h1 class="text-[14px] font-semibold">{{this.data.paidDate.split('T')[0]}}</h1>
+                    </div>
+                    <div>
+                        <p class="text-[14px]">Voucher No:</p>
+                        <h1 class="text-[14px] font-semibold">#CLC-V-{{this.data.voucherId}}</h1>
+                    </div>
+                </div>
+            </div>
+
+            <table class="w-full">
+                <thead class="bg-slate-300 text-black border-[2px]">
+                    <tr>
+                        <th class="py-[13px] px-[16px]  w-[100px] text-left">Paid Date</th>
+                        <th class="py-[13px] px-[16px]  w-[100px] text-left">Paid Time</th>
+                        <th class="py-[13px] px-[16px] w-[100px] text-left">Payment Type</th>
+                        <th class="py-[13px] px-[16px] w-[100px] text-left">Paid Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b-2">
+                        <td class="py-[16px] px-[16px]  w-[100px]">{{(this.paidDateTime).split(" ")[0]}}</td>
+                        <td class="py-[16px] px-[16px]  w-[100px]">{{(this.paidDateTime).split(" ")[1]}}</td>
+                        <td class="py-[16px] px-[16px] w-[100px]">{{this.data.paymentType|uppercase}}</td>
+                        <td class="py-[16px] px-[16px] w-[100px]">{{(this.data.paidAmount).toFixed(2)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+
+            <p class="info@comfortlinenco.comt-[16px] font-semibold text-center uppercase pt-[16px] ">
+                Payment is confirmed!
+            </p>
+            <div class="flex flex-row justify-between">
+                <div class=" font-semibold text-center mt-[30px] pt-[16px] ">
+                    <div>------------------------</div>
+                    <div>NIC Number</div>
+                </div>
+                <div class=" font-semibold text-center mt-[30px] pt-[16px] ">
+                    <div>------------------------</div>
+                    <div>Received By</div>
+                </div>
+                <div class=" font-semibold text-center mt-[30px] pt-[16px] ">
+                    <div>------------------------</div>
+                    <div>Signature</div>
+                </div>
+            </div>
+            <p
+                class="font-normal text-sm text-center mb-[16px] mt-[30px] flex flex-col items-center justify-center border-t-[1px] ">
+
+                <!-- <span> PILLOWS | DUVETS | BEDQUILTS | BEDSHEETS | MATTERS PROTECTORS | PREGNANCY & FEEDING PILLOW | TRAVELLING MAT | SLEEPING BAG</span><br > -->
+                <span>Office : #33/24, Hekitta Lane, Wattala | Tel: 011-2985400 | Hot Line: 076-1382156 | Email :
+                    info&#64;comfortlinenlk.com | www.cherryb.co</span>
+
+            </p>
+        </div>
+
+    </div>
+</ng-container>

@@ -1,0 +1,10 @@
+<div class="notification">
+  <button (click)="openNotification()" mat-icon-button color="warn"
+    [disabled]="(salesChequeDuesCount + purchaseChequeDuesCount +productsLowerThanReorderLevelCount)==0"
+    [matBadge]="salesChequeDuesCount + purchaseChequeDuesCount +productsLowerThanReorderLevelCount"
+    matBadgePosition="before" matBadgeColor="warn" matBadgeSize="small">
+    <span
+      [ngClass]="{'white-button': (salesChequeDuesCount + purchaseChequeDuesCount + productsLowerThanReorderLevelCount) == 0}"
+      class="material-symbols-outlined">notifications</span>
+  </button>
+</div>

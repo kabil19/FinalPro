@@ -1,1 +1,49 @@
-<p>backup works!</p>
+   <div class="bg-white shadow-lg rounded-lg h-full p-[10px]">
+    <h2 class="text-3xl font-semibold mb-4 text-center">CLC Backup and Restore Data</h2>
+    
+    <div class="flex flex-col justify-center items-center gap-[20px] h-[calc(100vh-10rem)] border-b-2 " [attr.aria-disabled]="isLoading">
+      <!-- Left side for Backup -->
+      <div class="w-1/2 py-[50px] flex flex-col justify-center items-center " [ariaDisabled]="isLoading" >
+        <h3 class="text-2xl font-semibold mb-4">Backup Data</h3>
+        <button
+          (click)="onBackup()"
+          class="w-full bg-purple-600 hover:bg-purple-800 text-white font-semibold py-3 px-4 rounded"
+        >
+          <span *ngIf="isBackupLoading" class="mr-2 flex justify-center">
+            <div class="w-4 h-4 border-2 border-t-2 border-white border-solid border-r-[transparent] rounded-full animate-spin"></div>
+          </span>
+          <span *ngIf="!isBackupLoading">
+            Start Backup
+          </span>
+        </button>
+      </div>
+      
+      <!-- Right side for Restore -->
+      <div class="w-1/2 py-[50px] flex flex-col justify-center items-center border-t-4" [attr.aria-disabled]="isBackupLoading">
+        <h3 class="text-2xl font-semibold mb-4">Restore Data</h3>
+        <div class="mb-4">
+          <label for="file-upload" class="block text-sm font-medium text-gray-700">Select a file:</label>
+          <input
+            id="file-upload"
+            type="file"
+            (change)="onFileSelected($event)"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md"
+          />
+        </div>
+      
+        <button  [disabled]="!uploadForm.get('file')?.value || isLoading"
+          (click)="onUpload()"
+          class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded"
+        >
+          <span *ngIf="isLoading" class="mr-2">
+            <div class="w-4 h-4 border-2 border-t-2 border-white border-solid border-r-[transparent] rounded-full animate-spin"></div>
+          </span>
+          <span *ngIf="!isLoading">
+            Restore Backup
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  

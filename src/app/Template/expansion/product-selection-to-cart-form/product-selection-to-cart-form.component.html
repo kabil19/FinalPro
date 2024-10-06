@@ -1,0 +1,100 @@
+<div class="main-container-userform bg-neutral-200 shadow-2xl flex flex-col items-center justify-center">
+
+    <span mat-dialog-title class=" text-sm ">
+        {{this.data.title}} Product
+    </span>
+
+    <div mat-dialog-content class="rounded-lg mat overflow-hidden">
+        <form [formGroup]="productSelectionForm" class="overflow-hidden flex flex-col" (submit)="selectOperation()">
+
+            <mat-form-field class="cdk-visually-hidden">
+                <mat-label> Id </mat-label>
+                <input matInput formControlName="proCartId" type="text" class="" />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Product</mat-label>
+                <input [readonly]="this.data.title=='Update'" type="text" placeholder="Product" matInput
+                    formControlName="stockOBJ" [formControl]="stockOBJControl" [matAutocomplete]="auto">
+                <mat-error class="text-sm" *ngIf="productSelectionForm.get('stockOBJ')?.errors?.['required']">
+                    This field is required!
+                </mat-error>
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+                    [displayWith]="displayProduct.bind(this)">
+                    <mat-option *ngFor="let anItem of filterOptions | async" [value]="anItem.stockId"
+                        (optionSelected)="getSelectedProduct_sList(anItem.stockId); setTotal()"
+                        (onSelectionChange)="getSelectedProduct_sList(anItem.stockId); setTotal()">
+                        {{anItem.stockId}} | {{anItem.itemName}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <div class="flex gap-3">
+                <mat-form-field>
+                    <mat-label> Quantity </mat-label>
+                    <input matInput formControlName="quantity" type="number" step=".01" class="" (focus)="setTotal()" />
+                    <mat-error class="text-sm" *ngIf="productSelectionForm.get('quantity')?.errors?.['required']">
+                        This field is required!
+                    </mat-error>
+                    <mat-error class="text-sm" *ngIf="productSelectionForm.get('quantity')?.errors?.['exceedsQty']">
+                        Quantity exceeded!
+                    </mat-error>
+                    <mat-error class="text-sm" *ngIf="productSelectionForm.get('quantity')?.errors?.['inValid']">
+                        Invalid Qty!
+                    </mat-error>
+                    <mat-error class="text-xs" *ngIf="productSelectionForm.get('quantity')?.hasError('pattern')">Enter a
+                        non-negative value!</mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-label>Total</mat-label>
+                    <input readonly matInput formControlName="total" type="number" step=".01" class="" />
+                    <mat-error class="text-sm" *ngIf="productSelectionForm.get('total')?.errors">This field is
+                        required!</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="flex gap-3">
+                <mat-form-field>
+                    <mat-label> Unit Discount </mat-label>
+                    <input placeholder="Eg: 12.5% or 50 or 15%" matInput formControlName="discount" type="text"
+                        step=".01" class="" (focus)="setNetAmount()" />
+                    <mat-error class="text-sm" *ngIf="productSelectionForm.get('discount')?.hasError('required')">This
+                        field is required!</mat-error>
+                    <mat-error class="text-xs" *ngIf="productSelectionForm.get('discount')?.hasError('pattern')">Invalid
+                        Data (eg: 10.0% | 5% | 100)!</mat-error>
+                    <mat-error class="text-xs"
+                        *ngIf="productSelectionForm.get('discount')?.hasError('inValidDiscount')">Discount Can't exceed
+                        the sell price!</mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label> Net Amount</mat-label>
+                    <input readonly matInput formControlName="netAmount" type="number" step=".01" class="" />
+                    <mat-error class="text-sm" *ngIf="productSelectionForm.get('netAmount')?.hasError('required')">This
+                        field is required!</mat-error>
+                    <mat-error class="text-xs"
+                        *ngIf="productSelectionForm.get('netAmount')?.hasError('pattern')">Invalid data!</mat-error>
+                </mat-form-field>
+            </div>
+            <mat-form-field class="cdk-visually-hidden">
+                <mat-label>Selected Invoice</mat-label>
+                <input type="text" placeholder="invoice" matInput formControlName="tempInvoiceOBJ"
+                    [formControl]="tempInvoiceOBJControl">
+
+            </mat-form-field>
+
+
+            <div mat-dialog-actions class="button-wrapper flex flex-row" align="center">
+                <button id="submitButton" [disabled]="productSelectionForm.invalid || !selectedProduct.length"
+                    mat-flat-button color="primary" class="save" type="submit">
+                    {{data.title}}
+                </button>
+
+            </div>
+        </form>
+    </div>
+
+
+
+</div>

@@ -1,0 +1,18 @@
+<div class="flex flex-row gap-3 align-items-center table-actions-btn">
+   
+    <!-- <button type="button" class="tooltip no-border-btn" (click)="updateFormTrigger()" [disabled]="this.params.data.finalized">
+        <mat-icon class="mt-2" color="basic">mode_edit</mat-icon>
+        <span class="tooltiptext1">Can't be updated</span>
+    </button> -->
+    
+   <button type="button" class="tooltip no-border-btn" [disabled]="this.params.data.finalized" (click)="openDelDialog()">
+       <mat-icon class="mt-2" color="" style="color: #fa0000d2;" >delete_forever</mat-icon>
+       <span class="tooltiptext">Can't be deleted</span>
+    </button>
+
+<button type="button" mat-button-raised class="no-border-btn" (click)="openSelectedInvoice()">
+    <span class="mt-2 material-symbols-outlined">
+        file_open
+        </span>
+   </button>
+</div>

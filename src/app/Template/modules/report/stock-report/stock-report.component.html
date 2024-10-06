@@ -1,0 +1,49 @@
+<div class="w-full h-full  rounded-xl p-[10px] bg-white flex gap-[10px]">
+    <div
+        class="border-solid pr-[20px] border-r-[2px] border-slate-300 w-[20%] h-full  rounded-l-xl pt-[35px] flex flex-col items-center ">
+
+        <form [formGroup]="stockReport">
+            <mat-form-field>
+                <mat-label>Stock</mat-label>
+                <mat-select formControlName="stockOption">
+                    <mat-option *ngFor="let stock of reports" [value]="stock.value">{{stock.viewValue}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+           <!--  <mat-form-field class="w-full">
+                <mat-label> Price Start range </mat-label>
+                <input matInput formControlName="startPrice" type="number" class="" />
+
+            </mat-form-field>
+            <mat-form-field class="w-full">
+                <mat-label> Price End range </mat-label>
+                <input matInput formControlName="endPrice" type="number" class="" />
+
+            </mat-form-field>
+ -->
+        </form>
+        <section class="w-[100%] flex flex-col gap-[5px]">
+            <div class="w-full flex flex-col justify-center items-center">
+                <button mat-raised-button class="w-[95%]" color="primary" (click)="generateReport()">Generate
+                    Report</button>
+            <!--     <button mat-raised-button class="w-[95%]" color="primary" (click)="generateWithPrice()">Generate
+                    Report For Price</button> -->
+            </div>
+            <div class="w-full flex flex-col justify-center items-center" *ngIf="isReportGenerated">
+                <button mat-raised-button class="w-[95%]" color="warn" (click)="printReport()">Print Report</button>
+            </div>
+
+        </section>
+    </div>
+
+    <div class="border-solid  w-[80%]  rounded-r-xl overflow-auto">
+
+        <ng-container *ngIf="!isReportGenerated" class="">
+            <div class="w-full h-full grid justify-center align-middle items-center">
+                <app-empty-report></app-empty-report>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isReportGenerated">
+            <app-report-template id="stockTemp" [inputData]="dataToSet"></app-report-template>
+        </ng-container>
+    </div>
+</div>

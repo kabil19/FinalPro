@@ -1,0 +1,73 @@
+<div class="search-cont">
+    <div class="box">
+        <input type="text" placeholder="Search" (input)="searchDataInRows()" [(ngModel)]="searchCharac" />
+        <mat-icon>search</mat-icon>
+    </div>
+</div>
+<div class="flex flex-row justify-center w-[100%]">
+    <mat-card class="w-full rounded-3xl h-2/4 my-[16px]">
+        <mat-card-header class="bg-purple-200 rounded-lg m-1 flex flex-col justify-center items-center">
+            <div class="custDetailsContainer rounded-lg bg-purple-100 mt-3 h-1/2 w-full">
+                <mat-card-subtitle class="font-semibold text-lg">Invoice No :
+                    <span class="font-bold text-gray-700 text-lg">{{
+                        this.invoiceNumber
+                        }}</span></mat-card-subtitle>
+                <mat-card-subtitle class="font-semibold text-lg">Customer Name :
+                    <span class="font-bold text-gray-700 text-lg">
+                        {{ this.customerName | uppercase }}</span></mat-card-subtitle>
+                <mat-card-subtitle class="font-semibold text-lg">Customer Contact :
+                    <span class="font-bold text-gray-700 text-lg">{{
+                        this.custContact
+                        }}</span></mat-card-subtitle>
+            </div>
+            <div class="paymentsContainer mt-3 ">
+                <mat-card-subtitle class="font-semibold text-black !text-base">Total Amount :
+                    <span class="font-bold text-blue-500">Rs. {{
+                        this.netAmount.toFixed(2)
+                        }}</span>
+                </mat-card-subtitle>
+
+                <mat-card-subtitle class=" font-semibold text-black !text-base">Advance Payment :
+                    <span class="font-bold text-green-500">Rs. {{
+                        paidAmount.toFixed(2)
+                        }}</span></mat-card-subtitle>
+
+                <mat-card-subtitle class=" font-semibold  text-black !text-base">Balance :
+                    <span class="font-bold text-red-500">Rs. {{
+                        (netAmount-paidAmount).toFixed(2)
+                        }}</span></mat-card-subtitle>
+            </div>
+        </mat-card-header>
+
+        <mat-card-actions class="flex flex-row justify-around align-middle">
+            <button mat-raised-button [disabled]="productCartItems.length<=0 || (netAmount-paidAmount)<0"
+                (click)="showInvoiceDetails()" color="warn">
+                Next
+            </button>
+            <button mat-raised-button color="basic" (click)="openPay()">Payment</button>
+            <!-- <button mat-raised-button color="basic" [disabled]="productCartItems.length<=0 || (netAmount-paidAmount)<=0"
+                (click)="makePayment()">Make a payment</button> -->
+
+            <button mat-raised-button color="primary" (click)="insertTrigger()">
+                Add products
+            </button>
+            <button mat-raised-button color="basic" (click)="openDelDiolog()">
+                Cancel Invoice
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<div>
+    <div class="user-data-wrapper flex flex-col">
+        <div class="table-cont flex justify-center">
+            <ag-grid-angular class="ag-theme-alpine user-table cursor-pointer" [paginationAutoPageSize]="true"
+                style="margin-bottom: 1rem; height: 50vh; width: 76vw" [rowData]="rowData$ | async"
+                [columnDefs]="columnDef" [rowSelection]="rowSelection" (cellClicked)="onCellClicked($event)"
+                (gridReady)="onGridReady($event)" [pagination]="true">
+            </ag-grid-angular>
+        </div>
+
+
+    </div>
+</div>

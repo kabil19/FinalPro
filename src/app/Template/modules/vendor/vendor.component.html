@@ -1,2 +1,24 @@
+<div class="user-data-wrapper flex flex-col">
+    <div class="search-cont -translate-y-4 ">
+        <div class="box">
+            <input type="text" placeholder="Search" (input)="searchDataInRows()" [(ngModel)]="searchCharac">
+            <mat-icon>search</mat-icon>
 
-<p>vendor works!</p>
+        </div>
+
+    </div>
+
+
+    <div class="user-table-cont flex justify-center">
+        <ag-grid-angular class="ag-theme-alpine user-table cursor-pointer" [paginationAutoPageSize]="true"
+            style=" height: 65vh; width:76vw;" [rowData]="rowData$ | async" [columnDefs]="columnDef"
+            [rowSelection]="rowSelection" (cellClicked)="onCellClicked($event)" (gridReady)="onGridReady($event)"
+            [pagination]="true">
+        </ag-grid-angular>
+    </div>
+    <div class="btn-container mb-5 flex flex-row mt-5 gap-6 justify-end mr-5 ">
+        <button mat-raised-button class="rounded-sm font-semibold w-36" color="primary" (click)="insertTrigger()">Vendor
+            <mat-icon>person_add</mat-icon>
+        </button>
+    </div>
+</div>

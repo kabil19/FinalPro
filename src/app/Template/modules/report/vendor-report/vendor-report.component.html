@@ -1,0 +1,70 @@
+<div class="w-full h-full  rounded-xl p-[10px] bg-white flex gap-[10px]">
+    <div
+        class="border-solid pr-[20px] border-r-[2px] border-slate-300 w-[22%] h-full  rounded-l-xl pt-[35px] flex flex-col items-center ">
+
+        <form [formGroup]="vendorReportForm" class="w-full ">
+            <mat-form-field class="w-full">
+                <mat-label>Vendor Report With in Range</mat-label>
+                <mat-select formControlName="selectedOpt" name="report" class="font-mono">
+                    <mat-option class="font-semibold font-mono" *ngFor="let option of reports"
+                        [value]="option.value">{{option.viewValue|uppercase}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Vendor</mat-label>
+                <input type="text" placeholder="vendor" matInput formControlName="vendor" [formControl]="vendorControl"
+                    [matAutocomplete]="auto" (focus)="onVendorFocus()">
+                <mat-error *ngIf="vendorReportForm.get('vendor')?.hasError">This field is required!</mat-error>
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+                    [displayWith]="displayVendorName.bind(this)">
+                    <mat-option class="font-semibold font-mono" *ngFor="let vendor of filterOptions | async"
+                        [value]="vendor.vendorId" (onSelectionChange)=" getVendorId(vendor.vendorId)">
+
+                        {{vendor.vendorId}} | {{vendor.vendorName}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <!-- *ngIf="vendorReportForm.get('customer')?.value!=''" -->
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                    <input matStartDate formControlName="start" placeholder="Start date">
+                    <input matEndDate formControlName="end" placeholder="End date">
+                </mat-date-range-input>
+                <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+                <mat-error *ngIf="range.get('end')?.hasError">End Date is required!</mat-error>
+                <mat-error *ngIf="range.get('start')?.hasError">Start Date field is required!</mat-error>
+
+
+            </mat-form-field>
+
+            <!-- <p class="m-[5px]">Selected range: {{range.value | json}}</p> -->
+        </form>
+        <section class="w-[100%] flex flex-col gap-[5px]">
+            <div class="w-full flex flex-col justify-center items-center">
+                <button mat-raised-button class="w-[95%]" color="primary" (click)="generateReport()">Generate
+                    Report</button>
+            </div>
+            <div class="w-full flex flex-col justify-center items-center" *ngIf="isReportGenerated">
+                <button [disabled]="!isReportAvailable" mat-raised-button class="w-[95%]" color="warn"
+                    (click)="printReport()">Print Report</button>
+            </div>
+        </section>
+    </div>
+
+    <div class="border-solid  w-[78%]  rounded-r-xl overflow-auto">
+
+        <ng-container *ngIf="!isReportGenerated" class="">
+            <div class="w-full h-full grid justify-center align-middle items-center">
+                <app-empty-report></app-empty-report>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isReportGenerated">
+            <app-report-template id="stockTemp" [inputData]="dataToSet"></app-report-template>
+        </ng-container>
+    </div>
+</div>

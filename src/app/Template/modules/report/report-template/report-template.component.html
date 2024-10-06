@@ -1,0 +1,285 @@
+<ng-container *ngIf="inputData.reportType != 'Invoice Reprint' && inputData.result">
+    <div class="grid ">
+        <!-- InvoiceTemplate -->
+        <div class="">
+            <div class="w-full h-auto p-[16px] relative">
+                <div class="flex flex-col items-center justify-between mb-[20px]">
+                    <div class="flex flex-row mb-[25px] gap-[8px]  ">
+                        <div class="w-[100px] h-[100px]">
+                            <img src="../../../assets/logo/logo2.png" alt="company-logo"
+                                class="w-full h-full object-contain" />
+                        </div>
+                        <div class="h-[101px] flex flex-col mb-[10px]">
+                            <div class="uppercase text-[36px] font-thin">COMFORT LINEN COMPANY (PVT) LTD</div>
+                            <div class="text-[20px] pb-[5px]">Manufacturer of quilt & bed Linen</div>
+                        </div>
+                    </div>
+                    <h1 class="uppercase font-bold text-[30px]">{{inputData.reportType}}</h1>
+                    <ng-container *ngIf="
+                    inputData.reportType!='Custom Purchase Payments'&&
+                    inputData.reportType!='Custom Sales Payments'
+                     && inputData.reportType!='Vendor Report' 
+                     && inputData.reportType!='Customer Report'
+                      && inputData?.dateRange ">
+                        <div class="text-center font-bold">
+                            <div>Date Range: </div><span>{{(inputData?.dateRange).split("-")[0]|date:'yyyy-MM-dd'}}
+                                To </span><span>{{(inputData?.dateRange).split("-")[1]|date:'yyyy-MM-dd'}}</span>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="inputData.reportType=='Stock Report'">
+                        <div>{{inputData?.reportType}} On {{currentDate}}</div>
+                    </ng-container>
+
+                    <div class="w-[100%] flex justify-center gap-[20px] font-bold"
+                        *ngIf="inputData.reportType ==='Custom Purchase Payments'&& inputData?.result">
+
+                        <div>Purchase Invoice: </div>
+                        <div>{{inputData?.result[0].ConfirmPurchaseOBJ?.purchaseInvoice}}|</div>
+                        <div>Vendor Name: </div>
+                        <div>{{inputData?.result[0].ConfirmPurchaseOBJ?.vendorOBJ?.vendorName}}|</div>
+                        <div>Date Range: </div><span>{{(inputData?.dateRange).split("-")[0]|date:'yyyy-MM-dd'}}
+                            To</span>
+                        <span>{{(inputData?.dateRange).split("-")[1]|date:'yyyy-MM-dd'}}</span>
+
+                    </div>
+                    <div class="w-[100%] flex justify-center gap-[20px] font-bold"
+                        *ngIf="inputData.reportType == 'Custom Sales Payments'&& inputData?.result">
+
+                        <div>Sales
+                            Invoice: </div>
+                        <div>{{inputData?.result[0].confirmInvoiceOBJ?.invoiceNumberRef}}</div>
+                        <div>Customer
+                            Name: </div>
+                        <div>{{inputData?.result[0].confirmInvoiceOBJ?.customerOBJ?.custName}}</div>
+                        <div>Date Range: </div><span>{{(inputData?.dateRange).split("-")[0]|date:'yyyy-MM-dd'}}
+                            To</span>
+                        <span>{{(inputData?.dateRange).split("-")[1]|date:'yyyy-MM-dd'}}</span>
+                    </div>
+                    <div class="w-[100%] flex justify-center gap-[20px] font-bold"
+                        *ngIf="inputData.reportType ==='Vendor Report'&& inputData?.result">
+                        <div>Vendor Name: </div>
+                        <div>{{inputData.result?.purchaseInvoiceData?.[0]?.vendorOBJ?.vendorName}}|</div>
+                        <div>Date Range: </div><span>{{(inputData?.dateRange).split("-")[0]|date:'yyyy-MM-dd'}}
+                            To</span>
+                        <span>{{(inputData?.dateRange).split("-")[1]|date:'yyyy-MM-dd'}}</span>
+
+                    </div>
+                    <div class="w-[100%] flex justify-center gap-[20px] font-bold"
+                        *ngIf="inputData.reportType ==='Customer Report'&& inputData?.result">
+                        <div>Customer Name: </div>
+                        <div>{{inputData?.result?.salesInvoiceData?.[0]?.customerOBJ?.custName}}|</div>
+                        <div>Date Range: </div><span>{{(inputData?.dateRange).split("-")[0]|date:'yyyy-MM-dd'}}
+                            To</span>
+                        <span>{{(inputData?.dateRange).split("-")[1]|date:'yyyy-MM-dd'}}</span>
+
+                    </div>
+
+
+                </div>
+
+                <!--  <table class="w-full">
+                    <thead class="bg-slate-300 text-black border-[2px] ">
+                        <tr>
+                            <th class="py-[13px] px-[16px]  w-[100px] text-left"
+                                *ngFor="let aColumn of tableData.tableHeader">{{aColumn}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b-2" *ngFor="let rowData of this.tableData.tableData">
+                            <td class="py-[16px] px-[16px] w-[100px]" *ngFor="let aRowData of rowData">{{aRowData}}</td>
+                        </tr>
+                    </tbody>
+                </table> -->
+                <table class="w-full">
+                    <thead class="bg-slate-300 text-black border-[2px] ">
+                        <tr>
+                            <th class="py-[13px] px-[16px]  w-[100px] text-left"
+                                *ngFor="let aColumn of tableData.tableHeader">{{aColumn}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b-2" *ngFor="let rowData of this.tableData.tableData">
+                            <td class="py-[16px] px-[16px] w-[100px]" *ngFor="let aRowData of rowData">{{aRowData}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <p class=" font-semibold text-sm text-center pt-[16px] border-t-2 border-black">
+                    <span> PILLOWS | DUVETS | BEDQUILTS | BEDSHEETS | MATTRESS PROTECTORS | PREGNANCY & FEEDING PILLOW |
+                        TRAVELLING MAT | SLEEPING BAG</span><br>
+                    <span>Office : #33/24, Hekitta Lane, Wattala | Tel: 011-2985400 | Hot Line: 076-1382156 | Email :
+                        info&#64;comfortlinenlk.com | www.cherryb.co</span>
+                </p>
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="py-[16px] px-[16px] w-[100px]"></div>
+</ng-container>
+
+
+
+<ng-container *ngIf="inputData.reportType == 'Invoice Reprint' && inputData.result">
+    <div>
+        <ng-container class="grid">
+            <!-- InvoiceTemplate -->
+            <div class="">
+                <div class="w-full h-auto p-[16px] relative">
+                    <div class="flex flex-row mb-[25px] gap-[8px] border-b-2 border-black">
+                        <div class="w-[100px] h-[100px]">
+                            <img src="../../../assets/logo/logo2.png" alt="company-logo"
+                                class="w-full h-full object-contain" />
+                        </div>
+                        <div class="h-[101px] flex flex-col mb-[10px]">
+                            <div class="uppercase text-[36px] font-thin">COMFORT LINEN COMPANY (PVT) LTD</div>
+                            <div class="text-[20px] pb-[5px]">Manufacturer of quilt & bed Linen</div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h2 class="text-[30px] uppercase">Invoice</h2>
+                    </div>
+
+                    <div class="flex items-center justify-between mb-[30px]">
+                        <div class="flex flex-col gap-y-[20px]">
+                            <div>
+                                <p class="text-[14px]">Billed to :</p>
+                                <h1 class="text-[18px] font-semibold">
+                                    {{this.inputData?.result?.[0].confirmInvoiceOBJ?.customerOBJ?.custName
+                                    }}</h1>
+                            </div>
+                            <div>
+                                <p class="text-[14px]">
+                                    {{this.inputData?.result?.[0].confirmInvoiceOBJ?.customerOBJ?.address}}</p>
+                                <p class="text-[14px]">
+                                    {{this.inputData?.result?.[0].confirmInvoiceOBJ?.customerOBJ?.contact}}</p>
+                                <p class="text-[14px]">
+                                    {{this.inputData?.result?.[0].confirmInvoiceOBJ?.customerOBJ?.email}}</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-y-[20px] text-right">
+                            <div>
+                                <p class="text-[14px]">Invoice Date:</p>
+                                <h1 class="text-[14px] font-semibold">{{getDateForInvoiceRePrint().split("T")[0]}}</h1>
+                                <p class="text-[14px]">Invoice Time:</p>
+                                <h1 class="text-[14px] font-semibold">{{ getTime()}}</h1>
+                            </div>
+                            <div>
+                                <p class="text-[14px]">Invoice No:</p>
+                                <h1 class="text-[14px] font-semibold">
+                                    {{this.inputData?.result?.[0].confirmInvoiceOBJ?.invoiceNumberRef}}</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="w-full">
+
+                        <thead class="bg-slate-300 text-black">
+
+                            <tr>
+                                <th class="py-[13px] px-[16px]  text-left">Description</th>
+                                <th class="py-[13px] px-[16px] w-[100px] text-left">Qty</th>
+                                <th class="py-[13px] px-[20px] w-[150px] text-left">Price</th>
+                                <th class="py-[13px] px-[16px] w-[100px] text-left">
+                                    Discount
+                                </th>
+                                <th class="py-[13px] px-[16px] w-[200px] text-left">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rowData of tableData.tableData" class="border-b-2">
+                                <td class="py-[16px] px-[16px] w-[100px]"
+                                    [ngClass]="{'w-[100px]': !isItemName(rowData, aRowData)}"
+                                    *ngFor="let aRowData of rowData">{{aRowData}}</td>
+
+                                <!-- <td class="py-[16px] px-[16px] w-[100px]">{{item.quantity}}</td>
+                            <td class="py-[16px] px-[16px] w-[100px]">{{(item.stockOBJ.sellingPrice).toFixed(2)}}</td>
+                            <td class="py-[16px] px-[16px] w-[100px]">{{((item.discount/item.stockOBJ.sellingPrice)*100).toFixed(2)+"%"}}</td>
+                            <td class="py-[16px] px-[16px] w-[200px]">{{(item.netAmount).toFixed(2)}}</td> -->
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <div class="flex flex-col items-end mt-[16px] gap-y-[8px]">
+                        <div class="w-[500px] px-[16px]">
+                            <div class="flex items-baseline justify-between">
+                                <div class="w-[300px] pl-[100px]">
+                                    <p class="text-[14px]">Sub Total:</p>
+                                </div>
+                                <div class="w-[200px] pl-[16px]">
+                                    <p class="text-[14px] text-left">{{"Rs "+getTotalNetAmount().toFixed(2)}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-[500px] px-[16px]">
+                            <div class="flex items-baseline justify-between">
+                                <div class="w-[300px] pl-[100px]">
+                                    <p class="text-[14px]">Paid Amount:</p>
+                                </div>
+                                <div class="w-[200px] pl-[16px]">
+                                    <p class="text-[14px] text-left">{{"Rs
+                                        "+(this.inputData?.result?.[0].confirmInvoiceOBJ?.advanceAmount).toFixed(2)}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="w-[500px] px-[16px]">
+                        <div class="flex items-baseline justify-between">
+                            <div class="w-[300px] pl-[100px]">
+                                <p class="text-[14px]">Discount:</p>
+                            </div>
+                            <div class="w-[200px] pl-[16px]">
+                                <p class="text-[14px] text-left">$10</p>
+                            </div>
+                        </div>
+                    </div> -->
+                        <div class="w-[500px] px-[16px]">
+                            <div class="flex items-baseline justify-between">
+                                <div class="w-[300px] pl-[100px]">
+                                    <p class="text-[18px] font-semibold">Balance:</p>
+                                </div>
+                                <div class="w-[200px] pl-[16px]">
+                                    <p class="text-[18px] font-semibold text-left"> {{"Rs
+                                        "+((getTotalNetAmount()-(this.inputData?.result?.[0].confirmInvoiceOBJ?.advanceAmount)).toFixed(2))}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p
+                        class="font-semibold text-lg text-center mb-[16px] mt-[100px] flex flex-col items-center justify-center uppercase">
+                        Thank you!
+
+                    </p>
+
+                    <p class=" font-semibold text-sm text-center pt-[16px] border-t-2 border-black">
+                        <span> PILLOWS | DUVETS | BEDQUILTS | BEDSHEETS | MATTRESS PROTECTORS | PREGNANCY & FEEDING
+                            PILLOW | TRAVELLING MAT | SLEEPING BAG</span><br>
+                        <span>Office : #33/24, Hekitta Lane, Wattala | Tel: 011-2985400 | Hot Line: 076-1382156 | Email
+                            : info&#64;comfortlinenlk.com | www.cherryb.co</span>
+                    </p>
+                </div>
+            </div>
+        </ng-container>
+
+
+
+
+
+    </div>
+</ng-container>
+
+<ng-container *ngIf="inputData?.error">
+    <h2
+        class="w-full h-full grid justify-center align-middle items-center font-extrabold text-center uppercase font-mono text-red-600 text-[25px]">
+        {{tableData.error}}
+    </h2>
+</ng-container>

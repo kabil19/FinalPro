@@ -1,0 +1,35 @@
+<div class="user-data-wrapper flex flex-col">
+    
+        
+    <div class="search-cont -translate-y-4  ">
+     <div class="box">
+         <input type="text" placeholder="DD-MM-YYYY | Customer Name | Invoice No."   (input)="searchDataInRows()" [(ngModel)]="searchCharac">
+             <mat-icon >search</mat-icon>
+             
+     </div>
+   
+    </div>
+    
+
+ <div class="table-cont flex justify-center" >
+     <ag-grid-angular 
+     class="ag-theme-alpine user-table cursor-pointer" 
+     [paginationAutoPageSize]="true"
+     style=" height: 58vh; width:76vw;"
+     [rowData]="rowData$ | async" 
+     [columnDefs]="columnDef"
+     [rowSelection]="rowSelection" 
+     [pagination]="true"
+     (cellClicked)="onCellClicked($event)"
+     (cellDoubleClicked)="onCellDoubleClicked($event)"
+     (gridReady)="onGridReady($event)">
+     </ag-grid-angular>
+ </div>
+ 
+ 
+ <!-- <div class="btn-container mb-5 flex flex-row mt-5 gap-6 justify-end mr-5 ">
+ <button mat-raised-button class="rounded-sm font-semibold w-36" color="primary" (click)="insertTrigger()">Invoice
+     <mat-icon>person_add</mat-icon>
+ </button>
+ </div> -->
+</div>

@@ -1,0 +1,41 @@
+mat-card {
+    background-color: rgba(211, 211, 211, 0.247);
+   
+    cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.1) 0px 7px 29px 0px;
+    box-shadow: none;
+    transition: all 0.2s;
+    border-radius: 10px;
+}
+
+/* SideBar ->#382e59 , previBlue->#7d97f4*/
+mat-card:hover {
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: #917fcafd 0px 0px 20px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+        rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+        rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transform: translate(0px, 4px);
+    border: 1px solid rgb(255, 255, 255);
+    background: yellow;
+}
+
+mat-card img {
+    width: 17vw;
+    height: 30vh;
+    opacity: 0.75;
+    transition: 0.5s;
+}
+
+mat-card:hover img {
+    opacity: 2;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    row-gap: 1rem;
+    column-gap: 0.5rem;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 25px;
+}

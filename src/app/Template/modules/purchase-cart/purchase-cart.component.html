@@ -1,0 +1,62 @@
+<div class="flex flex-col gap-y-2 justify-center">
+    <div>
+        <div class="user-data-wrapper flex flex-col m-[10px]">
+            <div class="search-cont">
+                <div class="box">
+                    <input type="text" placeholder="Search" (input)="searchDataInRows()" [(ngModel)]="searchCharac" />
+                    <mat-icon>search</mat-icon>
+                </div>
+            </div>
+
+            <mat-card class="w-full rounded-xl overflow-hidden h-2/4">
+                <mat-card-header class="bg-purple-200 rounded-lg m-1 flex flex-col justify-center items-center">
+                    <div class="custDetailsContainer text-center rounded-lg bg-purple-100 mt-3 h-1/2 px-[20px]">
+                        <mat-card-subtitle class="font-semibold text-lg">Invoice No :
+                            <span class="font-bold text-gray-700 text-lg">{{
+                                purchaseInvoiceNum
+                                }}</span></mat-card-subtitle>
+                        <mat-card-subtitle class="font-semibold text-lg">Vendor Name :
+                            <span class="font-bold text-gray-700 text-lg">{{ vendorList.vendorName }}
+                            </span></mat-card-subtitle>
+                        <mat-card-subtitle class="font-semibold text-lg">Customer Contact :
+                            <span class="font-bold text-gray-700 text-lg">{{
+                                vendorList.contact
+                                }}</span></mat-card-subtitle>
+                    </div>
+                    <div class="paymentsContainer mt-3">
+                        <mat-card-subtitle class="font-bold text-sm">Total Amount :
+                            <span
+                                class="font-bold">Rs. {{totalNetAmount.toFixed(2)}}</span></mat-card-subtitle>
+                            <!-- <span
+                                class="font-bold">{{(this.purchaseList[0].netAmount).toFixed(2)}}</span></mat-card-subtitle> -->
+
+                       
+                    </div>
+                </mat-card-header>
+
+                <mat-card-actions class="flex flex-row justify-around align-middle">
+                    <button mat-raised-button color="primary" (click)="insertTrigger()">
+                        Add more Products
+                    </button>
+                    <button mat-raised-button color="warn" [disabled]="this.purchaseCart.length<=0"  (click)="completeInvoice()">
+                        Complete Invoice
+                    </button>
+                    <button mat-raised-button color="basic" (click)="cancelPurchase()">
+                        Cancel Purchase
+                    </button>
+                    
+                </mat-card-actions>
+            </mat-card>
+        </div>
+
+        <div class="table-cont flex justify-center">
+            <ag-grid-angular class="ag-theme-alpine user-table cursor-pointer" [paginationAutoPageSize]="true"
+                style="margin-bottom: 1rem; height: 50vh; width: 76vw" [rowData]="rowData$ | async"
+                [columnDefs]="columnDef" [rowSelection]="rowSelection" (cellClicked)="onCellClicked($event)"
+                (gridReady)="onGridReady($event)" [pagination]="true">
+            </ag-grid-angular>
+        </div>
+
+    </div>
+</div>
+

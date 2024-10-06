@@ -1,0 +1,119 @@
+<div class="bg-neutral-200 shadow-2xl flex flex-col items-center justify-center h-full">
+    <!-- <img src="../../../../assets/logo/logoo.png" class="pt-5" width="90px">  -->
+    <div mat-dialog-title class="text-sm w-full text-center">
+        {{this.data.title}} User Data
+    </div>
+
+    <div mat-dialog-content class="overflow-hidden w-full h-full ">
+        <form [formGroup]="userForm" class="overflow-hidden flex flex-col" (ngSubmit)="selectOperation()">
+            <mat-form-field class="cdk-visually-hidden">
+                <mat-label> Id </mat-label>
+                <input matInput formControlName="userId" type="text" class="" />
+            </mat-form-field>
+
+            <div class="flex flex-row gap-[10px] justify-between">
+                <mat-form-field class="w-[100%]">
+                    <mat-label> First Name </mat-label>
+                    <input matInput formControlName="firstname" type="text" class="" />
+                    <mat-error class="text-sm" *ngIf="userForm.get('firstname')?.hasError('required')">This field is
+                        required!</mat-error>
+                    <mat-error class="text-xs" *ngIf="userForm.get('firstname')?.hasError('pattern')">
+                        Invalid First Name | Eg:Alexander</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-[100%]">
+                    <mat-label> Last Name </mat-label>
+                    <input matInput formControlName="lastname" type="text" class="" />
+                    <mat-error class="text-sm" *ngIf="userForm.get('lastname')?.hasError('required')">This field is
+                        required!</mat-error>
+                    <mat-error class="text-xs" *ngIf="userForm.get('lastname')?.hasError('pattern')">
+                        Invalid Last Name | Eg:Alexander</mat-error>
+
+                </mat-form-field>
+            </div>
+
+            <div class="flex flex-row gap-[10px] justify-between">
+                <mat-form-field class="w-[100%]">
+                    <mat-label> User Name </mat-label>
+                    <input matInput formControlName="username" type="text" class=""
+                        [readonly]="this.data.title=='Update'" />
+                    <mat-error class="text-xs" *ngIf="userForm.get('username')?.hasError('required')">This field is
+                        required!</mat-error>
+                    <mat-error class="text-xs" *ngIf="userForm.get('username')?.hasError('pattern')">
+                        Invalid User Name | Eg: Annie19 or John_18</mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field class="w-[100%]">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" type="email">
+                    <mat-error class="text-xs" *ngIf="userForm.get('email')?.hasError('required')">This field is
+                        required!</mat-error>
+                    <mat-error class="text-xs" *ngIf="userForm.get('email')?.hasError('pattern')">Invalid Email | Eg:
+                        Anne19&#64;outlook.com</mat-error>
+                </mat-form-field>
+            </div>
+            <mat-radio-group class="flex flex-row justify-evenly" name="gender" formControlName="gender"
+                color="primary">
+                <mat-label> Gender </mat-label>
+                <mat-radio-button id="male" value="male" name="male">Male</mat-radio-button>
+                <mat-radio-button id="female" value="female">Female</mat-radio-button>
+                <mat-radio-button id="others" value="others">Others</mat-radio-button>
+                <mat-error class="text-sm" *ngIf="userForm.get('gender')?.errors">This field is required!</mat-error>
+            </mat-radio-group>
+
+            <mat-form-field>
+                <mat-label>Role</mat-label>
+                <mat-select formControlName="role" mat-select matNativeControl class="">
+                    <mat-option value="ADMIN" class="text-purple-700">ADMIN</mat-option>
+                    <mat-option value="USER" class="text-purple-700">USER</mat-option>
+                    <!-- <option value="MANAGER" class="text-purple-700">MANAGER</option> -->
+                </mat-select>
+                <mat-error class="text-sm" *ngIf="userForm.get('role')?.errors">This field is required!</mat-error>
+            </mat-form-field>
+
+            <div class="flex flex-row gap-[10px]">
+                <mat-form-field>
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide" type="button">
+                        <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    </button>
+                    <mat-error class="text-xs" *ngIf="userForm.get('password')?.hasError('required')">This field is
+                        required!</mat-error>
+                    <mat-error class="text-xs" *ngIf="userForm.get('password')?.hasError('minlength')">Password must be
+                        at least 8 characters long!</mat-error>
+                    <mat-error class="text-xs" *ngIf="userForm.get('password')?.hasError('pattern')">Password must
+                        contain both letters and numbers!</mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Confirm your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPw">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide confirmPw'"
+                        [attr.aria-pressed]="hide" type="button">
+                        <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    </button>
+                    <mat-error class="text-xs" *ngIf="userForm.get('confirmPw')?.hasError('required')">This field is
+                        required!</mat-error>
+                    <mat-error class="text-xs" *ngIf="userForm.get('confirmPw')?.hasError('minlength')">Password must be
+                        at least 8 characters long!</mat-error>
+                    <mat-error class="text-xs" *ngIf="userForm.get('confirmPw')?.hasError('pattern')">Password must
+                        contain both letters and numbers!</mat-error>
+                </mat-form-field>
+            </div>
+            <div mat-dialog-actions class="flex justify-end" align="center">
+                <button [disabled]="userForm.invalid" mat-flat-button color="primary" class="save" type="submit">
+                    {{data.title}}
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+
+
+</div>

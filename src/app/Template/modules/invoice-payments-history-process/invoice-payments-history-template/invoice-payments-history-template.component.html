@@ -1,0 +1,127 @@
+<ng-container  class="grid" >
+    <!-- InvoiceTemplate -->
+    <div class="">
+        <div class="w-full h-auto p-[16px] relative" >
+            <div class="flex items-center justify-between mb-[50px]">
+                <div class="w-[100px] h-[100px]">
+                    <img src="../../../assets/logo/logo2.png" alt="company-logo" class="w-full h-full object-contain" />
+                </div>
+                <h1 class="uppercase font-bold text-[36px]">Payment History</h1>
+            </div>
+    
+            <div class="flex items-center justify-between mb-[30px]">
+                <div class="flex flex-col gap-y-[20px]">
+                    <div>
+                        <p class="text-[14px]">Billed to :</p>
+                        <h1 class="text-[18px] font-semibold"> selectedCustomer.custName</h1>
+                    </div>
+                    <div>
+                        <p class="text-[14px]">selectedCustomer.address</p>
+                        <p class="text-[14px]">selectedCustomer.contact</p>
+                        <p class="text-[14px]"> selectedCustomer.email</p>
+                    </div>
+                </div>
+    
+                <div class="flex flex-col gap-y-[20px] text-right">
+                    <div>
+                        <p class="text-[14px]">Invoice Date:</p>
+                        <h1 class="text-[14px] font-semibold">today</h1>
+                    </div>
+                    <div>
+                        <p class="text-[14px]">Invoice No:</p>
+                        <h1 class="text-[14px] font-semibold">#CLC-invoiceNumber</h1>
+                    </div>
+                </div>
+            </div>
+    
+            <table class="w-full">
+                <thead class="bg-black text-white">
+                    <tr>
+                        <th class="py-[13px] px-[16px]  w-[100px] text-left">Paid Date</th>
+                        <th class="py-[13px] px-[16px]  w-[100px] text-left">Paid Time</th>
+                        <th class="py-[13px] px-[16px] w-[100px] text-left">Payment Type</th>
+                        <th class="py-[13px] px-[16px] w-[100px] text-left">Paid Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let aPay of confirmSalesInvoiceConfirmPaymentLists" class="border-b-2">
+                        <td class="py-[16px] px-[16px]  w-[100px]">{{aPay.paidDate.split('T')[0]}}</td>
+                        <td class="py-[16px] px-[16px]  w-[100px]">{{aPay.paidDate.split('T')[1].split('+')[0]}}</td>
+                        <td class="py-[16px] px-[16px] w-[100px]">{{aPay.paymentType|uppercase}}</td>
+                        <td class="py-[16px] px-[16px] w-[100px]">{{(aPay.paidAmount).toFixed(2)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+    
+            <div class="flex flex-col items-end mt-[16px] gap-y-[8px]">
+                <div class="w-[500px] px-[16px]">
+                    <div class="flex items-baseline justify-between">
+                        <div class="w-[300px] pl-[100px]">
+                            <p class="text-[14px]">Sub Total:</p>
+                        </div>
+                        <div class="w-[200px] pl-[16px]">
+                            <p class="text-[14px] text-left">(total).toFixed(2)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-[500px] px-[16px]">
+                    <div class="flex items-baseline justify-between">
+                        <div class="w-[300px] pl-[100px]">
+                            <p class="text-[14px]">Paid Amount:</p>
+                        </div>
+                        <div class="w-[200px] pl-[16px]">
+                            <p class="text-[14px] text-left"> (paidAmount || 0).toFixed(2) </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="w-[500px] px-[16px]">
+                    <div class="flex items-baseline justify-between">
+                        <div class="w-[300px] pl-[100px]">
+                            <p class="text-[14px]">Discount:</p>
+                        </div>
+                        <div class="w-[200px] pl-[16px]">
+                            <p class="text-[14px] text-left">$10</p>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="w-[500px] px-[16px]">
+                    <div class="flex items-baseline justify-between">
+                        <div class="w-[300px] pl-[100px]">
+                            <p class="text-[18px] font-semibold">Total:</p>
+                        </div>
+                        <div class="w-[200px] pl-[16px]">
+                            <p class="text-[18px] font-semibold text-left"> ((total-paidAmount)||total).toFixed(2)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <p class="text-center mb-[16px] mt-[100px] flex flex-col items-center justify-center">
+                <span class="flex w-fit items-center gap-x-[24px] font-semibold">
+                    <span>33/24 Hekitta Lane, Wattala, Sri Lanka </span>
+                    <span class="h-[4px] w-[4px] rounded-[2px] bg-black"></span>
+                    <span>0112 985 400 </span>
+                    <span class="h-[4px] w-[4px] rounded-[2px] bg-black"></span>
+                    <span>info@comfortlinenco.com</span>
+                </span>
+                <span class="block text-[11px] mt-[10px]">Comfort Linen Company provides a wide range of products to meet
+                    the
+                    needs of every customer.</span>
+            </p>
+    
+            <p class="tex info@comfortlinenco.comt-[16px] font-semibold text-center pt-[16px] border-t-2">
+                Thank you for purchase!
+            </p>
+        </div>
+         <!-- <div>
+            <mat-dialog-actions align="center">
+                <button mat-raised-button color="basic" (click)="makePayment()">Make a payment</button>
+                <button mat-raised-button color="primary" (click)="completeInvoice()">Confirm Invoice</button>
+                <button mat-raised-button (click)="openPDF()" color="warn">Print</button>
+            </mat-dialog-actions>
+        
+        </div>  -->
+    </div>
+</ng-container>
+
+

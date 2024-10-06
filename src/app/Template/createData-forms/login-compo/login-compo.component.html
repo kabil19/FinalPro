@@ -1,0 +1,58 @@
+<div class="w-full h-full flex items-center justify-center">
+    <div
+        class="border-x-slate-500 flex items-center justify-center flex-col gap-y-[50px] bg-white rounded-[5px] p-[24px] w-fit mx-auto">
+        <div class="flex flex-col items-center justify-center gap-y-[4px]">
+            <div class="w-[70px] h-[70px] overflow-hidden">
+                <img src="../../../../assets/logo/logo2.png" class="w-full h-full object-contain" />
+            </div>
+            <div class="text-center">
+                <h1 class="text-[18px] font-semibold text-[#673ab7]">
+                    Comfort Linen (pvt) ltd
+                </h1>
+                <p class="text-[12px] opacity-[.6]">
+                    Transform Your Space: Stylish Tables,
+                    <span class="block text-[12px]">Cozy Pillows, and More</span>
+                </p>
+            </div>
+        </div>
+
+        <form (submit)="loginUser()" [formGroup]="logForm"
+            class="flex flex-col items-center justify-center content-center w-full md:w-[400px] system-login-form">
+            <h1 class="uppercase mb-[16px] font-semibold">Login</h1>
+            <mat-form-field class="w-full md:w-[calc(100%-32px)]">
+                <mat-label class=""> Username </mat-label>
+                <input name="username" matInput formControlName="userName" placeholder="" type="username"
+                    class="rounded-lg shadow-md" required />
+            </mat-form-field>
+
+            <mat-form-field class="w-full md:w-[calc(100%-32px)]">
+                <mat-label>Confirm your password</mat-label>
+                <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" />
+                <submit mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{
+                        hide ? "visibility" : "visibility_off"
+                        }}</mat-icon>
+                </submit>
+            </mat-form-field>
+
+            <div>
+                <div class="text-center flex flex-col items-center">
+                    <button mat-raised-button class="w-fit" color="primary" type="submit">
+                        Login
+                    </button>
+                    <button type="button"
+                        class="mt-[16px] text-[11px] font-semibold text-red-500 cursor-not-allowed opacity-[.6]"
+                        disabled>
+                        Forgot password ?
+                    </button>
+                    <button type="button" class="text-[11px] font-semibold mt-[2px] cursor-not-allowed opacity-[.6]"
+                        disabled>
+                        Already have an account?
+                        <span class="text-blue-500">Create Account</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

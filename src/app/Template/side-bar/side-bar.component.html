@@ -1,65 +1,49 @@
-<div class="logo ">
-<img src="../../../../assets/logo/logo2.png"  >
+<div class="w-full h-full bg-[#886cce46] dark:bg-[#382e59] rounded-[10px] p-[10px]">
+    <nav class="rounded-xl w-full h-full flex flex-col justify-between items-center" [ngClass]="{
+            dark: isSwitched,
+            'lite borderForNav': !isSwitched
+        }">
+        <div>
+            <app-user-deatils />
+        </div>
+
+        <ul class="flex flex-col w-full items-center gap-y-[16px]" [ngClass]="{
+                'text-gray-200': isSwitched,
+                'text-gray-600': !isSwitched 
+            }">
+            <li>
+                <a>
+                    <app-notification [notificationData]="notificationData"></app-notification>
+                </a>
+
+            </li>
+            <li class="cursor-not-allowed">
+                <a [attr.disabled]="isLinkDisabled ? true : null">
+                    <span class="material-symbols-rounded">
+                        manage_history
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" [routerLink]="['/dash_board/report']">
+                    <span class="material-symbols-rounded"> print </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" [routerLink]="['/settings']">
+                    <span class="material-symbols-rounded"> backup </span>
+                </a>
+            </li>
+
+            <li (click)="openUserManual()">
+                <a class="cursor-pointer">
+                    <span class="material-symbols-rounded"> info </span>
+                </a>
+            </li>
+        </ul>
+        <button class="bg-[#f77e88] flex items-center justify-center gap-x-[4px] w-full py-[8px] rounded-[5px]"
+            type="button" (click)="logout()">
+            <span class="text-[11px] font-bold uppercase">Sign out</span>
+        </button>
+    </nav>
 </div>
-<nav class="rounded-xl">
-   
-    <div class="cont">
-        
-    <button mat-raised-button class="logout">Logout</button>
-    </div>
-</nav>
-
-
-    <!-- <ul class="slide-conts">
-        <li>
-            <ul class="settings-conts">
-                <div class="setHead">SETTINGS</div>
-
-                <li>
-                    <a [routerLink]="['/sys-info']">
-                        <span class="material-symbols-rounded">
-                            info
-                        </span>
-                        <span class="sys-opt">
-                            System Info
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" [routerLink]='["/company-details"]'>
-                        <span class="material-symbols-rounded">
-                            manage_history
-                        </span>
-                        <span class="sys-opt">
-                            Company Details
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" [routerLink]='["/print"]'>
-                        <span class="material-symbols-rounded">
-                            print
-                        </span>
-                        <span class="sys-opt">
-                            Print Setup
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" [routerLink]='["/backup"]'>
-                        <span class="material-symbols-rounded">
-                            backup
-                        </span>
-                        <span class="sys-opt">
-                            Backup
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-            
-
-    </ul> -->
-
-

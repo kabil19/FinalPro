@@ -1,0 +1,15 @@
+<div  class="card-container flex justify-evenly">
+    <ng-container *ngFor="let aStock of this.products" style="height: 20rem; width: 20rem;">
+      <ng-container>
+        <mat-card routerLink="" style="text-align: center;">
+          <mat-card-header class="flex align-middle justify-center ">
+            <mat-card-title style="color: rgb(0, 0, 0);" class="font-bold">{{aStock.itemName}}</mat-card-title>
+            <mat-card-subtitle style="color: rgb(0, 0, 0);" class="font-bold"></mat-card-subtitle>
+          </mat-card-header>
+          <!-- <div class="img-cont flex items-center">
+            <img mat-card-image src="" />
+          </div> -->
+        </mat-card>
+      </ng-container>
+    </ng-container>
+ </div>

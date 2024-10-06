@@ -1,2 +1,28 @@
+<div *ngIf="!reportView" class="flex flex-row justify-start p-1 absolute left-[16px] top-[16px] z-[2] cursor-pointer" (click)="goBack()">
+                    <div class="close" >
+                        <span class="material-symbols-outlined text-slate-300">
+                            arrow_back
+                        </span>
+</div>
+</div>
+<div class=" border-solid border-l-pink-50 w-full h-[99%]  grid grid-cols-3 gap-[16px] p-[20px]" *ngIf="reportView">
+    <!-- <mat-card *ngFor="let card of Cards"  routerLink="/{{ card.route }}" -->
+    <mat-card *ngFor="let card of Cards" (click)="setValue(card.name)" [routerLink]="card.route"
+        class="!m-0  !w-full grid row-span-3 items-center justify-center  gap-y-[16px] object-fill !bg-white h-[100%] hover:!bg-slate-600">
+        <mat-card-header class="flex align-middle justify-center !p-0">
+            <mat-card-subtitle class="font-bold text-[#382e59] ">{{ card.name |
+                uppercase}}</mat-card-subtitle>
+        </mat-card-header>
+        <div class="img-cont flex items-center">
+            <!-- <img mat-card-image src="{{ card.imageUrl }}" class="object-contain" /> -->
+        </div>
+    </mat-card>
 
-<p>report works!</p>
+   
+</div>
+<app-stock-report *ngIf="reportName ==='Stock Report'" ></app-stock-report>
+<app-invoice-report *ngIf=" reportName ==='Invoice Report'"></app-invoice-report>
+<app-purchase-report *ngIf="reportName === 'Purchase Report'"></app-purchase-report>
+<app-payments-report *ngIf=" reportName === 'Payments Report'"></app-payments-report>
+<app-customer-report *ngIf=" reportName === 'Customer Report'"></app-customer-report>
+<app-vendor-report *ngIf=" reportName === 'Vendor Report'"></app-vendor-report>

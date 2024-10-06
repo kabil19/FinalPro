@@ -1,5 +1,97 @@
- .dash-contents-container{
-    margin-left: 3rem;
+.middleLogOrNonLogContainer{
+    /* width: 100%; */
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-right: 3rem;
+    /* height: 85vh; */
+    border-radius: 20px;
+    display: grid;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;  
+    position: relative;
+}
+
+.darkMode{
+    background-color: #382e59;
+}
+.liteMode{
+    background-color: #886cce46;
+    border: white solid 1px ;
+}
+
+
+.entirePageContainer{
+    background-color: rgba(211, 211, 211, 0.459);
+}
+
+.loginLoadDirectiveContainer{
+    width: 100%;
+    margin-left: 2rem;
     margin-top: 3rem;
     margin-right: 3rem;
-} 
+    height: 85vh;
+    border-radius: 20px;
+    display: flex;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;  
+    /* transform: translateX(50%); */
+    /* background-color: #382e59; */
+}
+
+.close{
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background-color: rgb(247, 126, 136);
+    /* transform: translate(71.5rem,-2rem); */
+    cursor: pointer;
+    right: 2rem;
+    top: 20px;
+}
+
+
+
+.logBackground{
+    background-color: #e6dcfcab;
+}
+
+.notifi-button-container{
+    /* border: black 2px; */
+    transform: translateY(1.5rem);
+    display: flex;
+    justify-content: flex-start;
+    /* align-items: ; */
+    flex-direction: row-reverse;
+}
+
+.notifiAndnonLoginDirectivesContainer{
+    /* border: solid black 2px; */
+    width: 90%;
+}
+
+.notifi{
+    color: aliceblue;
+    background-color: rgb(247, 126, 136);
+}
+.sideAndUser{
+    height: 97.8vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* .user-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 30vh;
+    width: 7vw; 
+    margin-left: .3rem;   
+} */
+/* footer{
+    position: absolute;
+    bottom: 2px;
+    background-color: #d9d5e749;
+    width: 100vw;
+    text-align: center;
+} */

@@ -1,21 +1,22 @@
-<div class="user-details-wrapper flex flex-col">
-    <div class="btn-container mb-5 flex justify-end">
-        <button mat-raised-button class="rounded-sm font-semibold" color="primary" (click)="insertTrigger()">Insert
+<div class="user-data-wrapper flex flex-col">
+    <div class="search-cont -translate-y-4 ">
+        <div class="box">
+            <input type="text" placeholder="Search" (input)="searchDataInRows()" [(ngModel)]="searchCharac">
+            <mat-icon>search</mat-icon>
+
+        </div>
+
+    </div>
+    <div class="user-table-cont flex justify-center ">
+        <ag-grid-angular class="ag-theme-alpine table cursor-pointer" [paginationAutoPageSize]="true"
+            style=" height: 65vh; width:70vw;" [rowData]="rowData$ | async" [columnDefs]="columnDef"
+            [class]="themeClass" [rowSelection]="rowSelection" (cellClicked)="onCellClicked($event)"
+            (gridReady)="onGridReady($event)" [pagination]="true">
+        </ag-grid-angular>
+    </div>
+    <div class="btn-container mb-5 flex flex-row mt-5 gap-6 justify-end mr-5 ">
+        <button mat-raised-button class="rounded-sm font-semibold w-36 custom-button" (click)="insertTrigger()">User
             <mat-icon>person_add</mat-icon>
         </button>
-    </div>
-
-    <div class="flex justify-center">
-        <ag-grid-angular class="ag-theme-alpine user-table cursor-pointer" 
-        [paginationAutoPageSize]="true" 
-        style="height: 500px; width:84.5vw;"
-        [rowData]="rowData$ | async"
-        [columnDefs]="columnDef" 
-        [pagination]="true"
-        [rowSelection]="rowSelection"
-        (cellClicked)="onCellClicked($event)"
-        (gridReady)="onGridReady($event)"
-        >
-        </ag-grid-angular>
     </div>
 </div>

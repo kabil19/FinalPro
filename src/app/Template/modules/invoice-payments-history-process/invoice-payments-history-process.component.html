@@ -1,0 +1,23 @@
+<div class="h-[800px] w-[1100px] flex gap-[10px]">
+    <div class=" w-[20%]">
+        <mat-dialog-actions align="center" class="w-[100%] grid">
+            <button mat-raised-button color="primary" class="w-full">Make A Payment</button>
+            <button mat-raised-button class="w-full" color="warn">Print</button>
+        </mat-dialog-actions>
+    </div>
+    <div class=" w-[60%] h-[100%] overflow-auto">
+        <app-invoice-payments-history-template></app-invoice-payments-history-template>
+
+    </div>
+</div>
+<!-- <ng-container *ngIf="productCartItems.length <= 0">
+    <mat-dialog-content class="bg-purple-100">
+        <div class="text-lg text-black font-sans text-center">
+            Add Products!
+        </div>
+        <div class="text-sm text-gray-500 font-sans text-center">
+            No Products has been added into the Cart. <br>
+            Add Products to generate an Invoice!
+        </div>
+    </mat-dialog-content>
+</ng-container> -->

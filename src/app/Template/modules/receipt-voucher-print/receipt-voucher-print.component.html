@@ -1,0 +1,28 @@
+<div class="h-[500px] w-[900px] grid ">
+    <div class="w-full h-full overflow-auto">
+        <div *ngIf="this.data?.confirmInvoiceOBJ">
+            <app-receipt id="receipt"></app-receipt>
+        </div>
+        <div *ngIf="this.data?.confirmPurchaseOBJ">
+            <app-voucher id="voucher"></app-voucher>
+        </div>
+        <div>
+        </div>
+    </div>
+
+    <div>
+        <mat-dialog-actions align="center" class="h-[5%] w-[100%] flex flex-col justify-center items-center">
+            <button mat-raised-button (click)="openPrintOperation()" class="w-[25%]" color="primary">Print</button>
+            <div class="flex flex-col justify-center items-center w-[25%]" *ngIf="this.data?.confirmInvoiceOBJ">
+                <button mat-stroked-button color="warn"
+                        class="relative w-full h-[48px] bg-blue-500 text-white rounded flex items-center justify-center"
+                        (click)="openMailForm()">
+                <span>Open Email Form</span>
+                </button>
+            </div>
+        </mat-dialog-actions>
+        
+    </div>
+    
+
+</div>

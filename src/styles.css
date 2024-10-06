@@ -1,4 +1,3 @@
-
 /* You can add global styles to this file, and also import other style files */
 /* style.css */
 
@@ -6,23 +5,112 @@
 @import "~ag-grid-community/styles/ag-grid.css";
 @import "~ag-grid-community/styles/ag-theme-alpine.css"; /* Use a theme of your choice */
 
-
-
-
-
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
-    font-size: 1rem;
+* {
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
-
-body{
+body {
     font-size: 5px;
     margin: 0;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 
+.custom-dialog-container {
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
+.custom-notification-dialog-container {
+    /* transform: translateX(-260px); */
+    border-radius: 1rem;
+    overflow: hidden;
+    max-height: 60vh;
+}
+
+.invoice-dialog-container {
+    height: 800px;
+    width: 1200px;
+}
+
+.system-login-form .mat-mdc-form-field .mat-mdc-text-field-wrapper {
+    background-color: #efefef;
+    border-radius: 4px;
+}
+
+.custom-form {
+    width: 30rem;
+    height: 30rem;
+}
+
+.temp-purchase-cart {
+    width: 100%;
+    height: 70vh;
+}
+
+ag-grid-angular {
+    border-radius: 15px !important;
+    overflow: hidden;
+    width: 100% !important;
+}
+
+.search-cont {
+   
+    height: unset !important;
+    margin-bottom: 20px !important;
+    justify-content: end !important;
+    margin-top: 16px !important;
+}
+
+.ag-theme-alpine {
+    
+    --ag-foreground-color: rgb(0, 0, 0) !important;
+    --ag-background-color: #ffffff98 !important;
+    --ag-header-foreground-color: rgb(0, 0, 0) !important;
+    --ag-header-background-color: rgba(255, 255, 255, 0.795) ;
+    --ag-odd-row-background-color: rgba(255, 255, 255, 0.445) !important;
+    --ag-header-column-resize-handle-color: rgba(0, 0, 0, 0.397) !important;
+   
+}
+
+.ag-theme-alpine .ag-header-cell {
+    display: flex !important;
+    align-items: center !important; 
+    font-size: 20px !important; 
+   
+}
+.ag-theme-alpine .ag-row {
+    display: flex !important;
+    align-items: center !important;
+    height: 50px !important;
+}
+
+.ag-theme-alpine .ag-cell {
+    display: flex !important;
+    align-items: center !important;
+    line-height: 50px !important; 
+    font-weight:600 !important;
+    font-size: 16px;
+}
+mat-form-field {
+    font-family: ui-monospace, 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace' !important;
+  }
+mat-form-field mat-label{
+    font-family: ui-monospace, 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace' !important;
+  }
+mat-form-field mat-select mat-option{
+    font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace' !important;
+  }
+  
+
+  .dialogbox-backdrop {
+    background-color: rgb(0 , 0 , 0 , .6);
+    backdrop-filter: blur(10px);
+  }

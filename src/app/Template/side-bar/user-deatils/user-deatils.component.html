@@ -1,11 +1,11 @@
-<img src="../../assets/Pic.PNG">
-    <ul>
-        <li class="user">
-            <a href="#">{{name}}</a>
-        </li>
-        <li id="role">{{role}}</li>
-    </ul>
+<div class="flex flex-col gap-y-[8px] items-center">
+    <div class="bg-white h-[60px] w-[60px] rounded-[30px] overflow-hidden border-2 border-[#382e59] dark:border-white">
+        <img [src]="'../../assets/icons/avatar.png'" class="w-full h-full object-cover">
+        <!-- <img src="" class="w-full h-full object-cover"> -->
+        </div>
 
-    
-        
-   
+           <div class="flex flex-col justify-center items-center gap-y-[4px] text-[#382e59] dark:text-white">
+            <button type="button" class="text-[18px] leading-[18px]">{{this.userName|uppercase}}</button>
+            <span id="role" class="text-[10px] font-semibold">{{role |uppercase}}</span>
+           </div>
+</div>

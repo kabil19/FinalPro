@@ -1,0 +1,46 @@
+<ng-container>
+<h2 mat-dialog-title>Make a Payment</h2>
+<mat-dialog-content [formGroup]="invoicePaymentForm">
+    <mat-form-field>
+        <mat-label>Payment Options</mat-label>
+        <mat-select formControlName="paymentType" [(value)]="selectedOption">
+            <mat-option  *ngFor="let anOption of paymentOptions" [value]="anOption.value"> {{anOption.viewValue}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div *ngIf="selectedOption === 'card'">
+        <mat-form-field>
+            <mat-label>Card Number</mat-label>
+            <input formControlName="cardRefNo" matInput placeholder="Enter your card number">
+            <mat-error *ngIf="invoicePaymentForm.get('cardRefNo')?.errors">This field is required!</mat-error>
+        </mat-form-field>
+    </div>
+    <div *ngIf="selectedOption === 'cash' || selectedOption ==='card' || selectedOption ==='cheque'">
+        <mat-form-field>
+            <mat-label>Amount</mat-label>
+            <input formControlName="paidAmount" matInput type="number"  placeholder="Enter the amount" (focus)="validateAmount()">
+            <mat-error *ngIf="invoicePaymentForm.get('paidAmount')?.errors">This field is required!</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="flex flex-col" *ngIf="selectedOption === 'cheque'">
+        <mat-form-field>
+            <mat-label>Ref. No</mat-label>
+            <input formControlName="chequeRefNo" matInput type="number"  placeholder="Enter the Cheque Ref No">
+            <mat-error *ngIf="invoicePaymentForm.get('chequeRefNo')?.errors">This field is required!</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Cheque Due date</mat-label>
+            <input formControlName="chequeDueDate" matInput [matDatepicker]="picker" >
+            <mat-error *ngIf="invoicePaymentForm.get('chequeDueDate')?.errors">This field is required!</mat-error>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div *ngIf="selectedOption">
+        <mat-dialog-actions align="center">
+          <button mat-button (click)="onNoClick()">Cancel</button>
+          <button mat-button  cdkFocusInitial (click)="payAmount()" disabled="{{!isValid}}">Pay</button>
+        </mat-dialog-actions>
+        </div>
+</mat-dialog-content>
+</ng-container>
+

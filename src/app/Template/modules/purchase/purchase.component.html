@@ -1,2 +1,21 @@
+<div class="mx-[20px] h-full grid items-center !bg-transparent">
+    <mat-card *ngIf="!isLoaded"
+        class="!h-[68vh] !rounded-[20px] !bg-white flex flex-col items-center justify-center gap-[20px]">
+        <mat-card-content>
+            <mat-card-header class="flex justify-center">
+                <mat-card-title class="font-semibold text-[#f77e88] text-[50px]">
+                    The Purchase Invoice is Empty!
+                    <mat-icon>remove_shopping_cart</mat-icon></mat-card-title>
+            </mat-card-header>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-raised-button color="primary" (click)="openPurchaseInvoiceForm()">
+                Create Purchase Invoice <mat-icon>add</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
 
-<p>purchase works!</p>
+    <mat-card *ngIf="isLoaded" class="!bg-transparent">
+        <app-purchase-cart></app-purchase-cart>
+    </mat-card>
+</div>
