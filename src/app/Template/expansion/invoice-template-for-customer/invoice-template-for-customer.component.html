@@ -3,14 +3,14 @@
     <div class="">
         <div class="w-full h-auto p-[12px] relative">
             <div
-                class="relative flex flex-row h-[160px] py-[8px] px-[10px] mb-[25px] justify-between gap-[8px] bg-slate-100">
+                class="relative flex flex-row h-[190px] py-[8px] px-[10px] mb-[25px] justify-between gap-[8px] ">
                 <div class="flex flex-row gap-[10px] items-center pb-[30px]">
                     <div class="w-[80px] h-[80px]">
                         <img src="../../../assets/logo/logo2.png" alt="company-logo"
                             class="w-full h-full object-contain" />
                     </div>
 
-                    <div class="h-[100px] flex flex-col items-center justify-center mb-[10px]">
+                    <div class="h-[100px] flex flex-col items-center justify-center mb-[10px] font-semibold">
                         <div class="uppercase text-[26px] font-thin">COMFORT LINEN COMPANY (PVT) LTD</div>
                         <div class="text-[20px] pb-[5px]">Manufacturer of quilt & bed Linen</div>
                     </div>
@@ -21,15 +21,15 @@
                 <div class="flex items-center justify-center w-[220px] ">
                     <img src="../../../../assets/icons/cherryb.png" alt="cherryb-logo" class="object-contain" />
                 </div>
-                <div class="text-left left-[100px] w-[560px] 
+                <div class="text-left left-[100px] w-[680px] 
                       pb-[15px] pt-[15px] justify-center 
-                     items-center absolute bottom-[5px] font-semibold text-sm">
+                     items-center absolute bottom-[5px] text-[16px]">
 
-                    <div>
+                    <div class=""><p class="text-lg font-bold">
                         Office : #33/24, Hekitta Lane, Wattala | Tel: 011-2985400 |
                         Hot Line: 076-1382156 |Email :
                         info&#64;comfortlinenlk.com | www.cherryb.co
-                    </div>
+                    </p></div>
                 </div>
             </div>
 
@@ -38,21 +38,21 @@
             <div class="flex items-center justify-between mb-[30px]">
                 <div class="flex flex-col gap-y-[10px]">
                     <div class="flex flex-row">
-                        <p class="text-[14px] font-semibold">Billed to: </p>
-                        <p class="text-[14px] uppercase"> {{this.selectedCustomer.custName}}</p>
+                        <p class="text-[20px]">Billed to: </p>
+                        <p class="text-[20px]  font-semibold uppercase"> {{this.selectedCustomer.custName}}</p>
                     </div>
 
                     <div class="flex flex-row">
-                        <p class="text-[14px] font-semibold">Address: </p>
-                        <p class="text-[14px]">{{this.selectedCustomer.address}}</p>
+                        <p class="text-[20px]">Address: </p>
+                        <p class="text-[20px]  font-semibold">{{this.selectedCustomer.address}}</p>
                     </div>
                     <div class="flex flex-row">
-                        <p class="text-[14px] font-semibold">Contact: </p>
-                        <p class="text-[14px]">{{this.selectedCustomer.contact}}</p>
+                        <p class="text-[20px]">Contact: </p>
+                        <p class="text-[20px]  font-semibold">{{this.selectedCustomer.contact}}</p>
                     </div>
                     <div class="flex flex-row">
-                        <p class="text-[14px] font-semibold">Email: </p>
-                        <p class="text-[14px]"> {{this.selectedCustomer.email}}</p>
+                        <p class="text-[20px]">Email: </p>
+                        <p class="text-[20px]  font-semibold"> {{this.selectedCustomer.email}}</p>
                     </div>
 
                 </div>
@@ -61,62 +61,63 @@
                 </div>
                 <div class="flex flex-col gap-y-[10px] text-right">
                     <div class="flex flex-row">
-                        <p class="text-[14px]">Invoice No:</p>
-                        <h1 class="text-[14px] font-semibold">{{this.invoiceNumber}}</h1>
+                        <p class="text-[20px]">Invoice No:</p>
+                        <h1 class="text-[20px] font-semibold">{{this.invoiceNumber}}</h1>
                     </div>
                     <div class="flex flex-row">
-                        <p class="text-[14px]">Invoice Date:</p>
-                        <h1 class="text-[14px] font-semibold">{{this.today}}</h1>
+                        <p class="text-[20px]">Invoice Date:</p>
+                        <h1 class="text-[20px] font-semibold">{{this.today}}</h1>
                     </div>
                     <div class="flex flex-row">
-                        <p class="text-[14px]">Invoice Time:</p>
-                        <h1 class="text-[14px] font-semibold">{{getInvoiceTime()}}</h1>
+                        <p class="text-[20px]">Invoice Time:</p>
+                        <h1 class="text-[20px] font-semibold">{{getInvoiceTime()}}</h1>
                     </div>
 
                 </div>
             </div>
 
-            <table class="w-full text-[25px]">
+            <table class="w-full text-base">
                 <thead class="bg-slate-100 text-black border border-slate-500 ">
                     <tr>
-                        <th class="py-[16px] px-[5px] w-[40px] text-left">REF</th>
-                        <th class="py-[13px] px-[16px] text-left">DESCRIPTION</th>
-                        <th class="py-[13px] px-[10px] w-[50px] text-left">QTY</th>
-                        <th class="py-[13px] px-[16px] w-[100px] text-left">UNIT PRICE</th>
-                        <th class="py-[13px] px-[5px] w-[40px] text-left">
-                            DISCOUNT
+                        <th class="py-[16px] px-[5px] w-[40px] text-left"><p class="text-xl">REF</p></th>
+                        <th class="py-[13px] px-[16px] text-left"><p class="text-xl">DESCRIPTION</p></th>
+                        <th class="py-[13px] px-[10px] w-[50px] text-left"><p class="text-xl">QTY</p></th>
+                        <th class="py-[13px] px-[16px] w-[140px] text-left"><p class="text-xl">UNIT PRICE</p></th>
+                        <th class="py-[13px] px-[5px] w-[40px] text-left"><p class="text-xl">
+                            DISCOUNT</p>
                         </th>
-                        <th class="py-[13px] px-[16px] w-[150px] text-center">TOTAL</th>
+                        <th class="py-[13px] px-[16px] w-[150px] text-center"><p class="text-xl">TOTAL</p></th>
                     </tr>
                 </thead>
-                <tbody class="font-semibold">
+                <tbody class=" ">
                     <tr *ngFor="let item of this.productCartItems ;let i = index"
                         class="border-b border-l border-r border-slate-500">
-                        <td class="py-[16px] px-[5px] border-r text-center border-slate-500">#{{i+1}}</td>
-                        <td class="py-[16px] px-[16px] border-r border-slate-500">{{item.stockOBJ.itemName}}</td>
-                        <td class="py-[16px] px-[5px] w-[40px] text-center border-r border-slate-500">{{item.quantity}}
+                        <td class="py-[16px] px-[5px] border-r text-center border-slate-500"><p class="text-xl">{{i+1}}</p></td>
+                        <td class="py-[16px] px-[16px] border-r border-slate-500"><p class="text-xl">{{item.stockOBJ.itemName}}</p></td>
+                        <td class="py-[16px] px-[5px] w-[40px] text-center border-r border-slate-500"><p class="text-xl">{{item.quantity}}</p>
                         </td>
-                        <td class="py-[16px] px-[16px] w-[120px] border-r text-right border-slate-500">Rs
-                            {{(item.stockOBJ.sellingPrice).toFixed(2)}}</td>
-                        <td class="py-[16px] px-[5px] w-[40px] border-r text-center border-slate-500">
-                            {{((item.discount/item.stockOBJ.sellingPrice)*100).toFixed(2)+"%"}}</td>
-                        <td class="py-[16px] px-[16px] w-[150px] text-right">Rs
-                            {{(item.netAmount).toFixed(2)}}</td>
+                        <td class="py-[16px] px-[16px] w-[140px] border-r text-right border-slate-500"><p class="text-xl">Rs
+                            {{(item.stockOBJ.sellingPrice).toFixed(2)}}</p></td>
+                        <td class="py-[16px] px-[5px] w-[40px] border-r text-center border-slate-500"><p class="text-xl">
+                            {{((item.discount/item.stockOBJ.sellingPrice)*100).toFixed(2)+"%"}}</p></td>
+                        <td class="py-[16px] px-[16px] w-[150px] text-right"><p class="text-xl">Rs
+                            {{(item.netAmount).toFixed(2)}}</p></td>
                     </tr>
                     <tr class="">
                         <!-- <td class="py-[16px] px-[16px] text-right font-semibold h-[30px]" colspan="2"><img src="../../../../assets/invoice/condition.png" alt=""></td> -->
-                        <td class="h-[120px] w-[50%] absolute left-[100px] my-5 py-[15px] px-[10px] border-black border-y border-x text-left "
+                        <td class="font-semibold h-[150px] w-[55%] absolute left-[100px] my-5 py-[15px] px-[10px] border-black border-y border-x text-left "
                             colspan="2">
-                            <div><b class="font-extrabold">NOTE</b>
+                            <div><p class="text-xl">NOTE
                                 <br>
                                 Conditions: Payment should be made by crossed cheques payable to
                                 the Account of "Comfort
                                 Linen Co (PVT) LTD."
-                            </div>
+                            </p></div>
+                            
                         </td>
-                        <td class="py-[16px] px-[16px] text-right font-semibold" colspan="4">Sub Total</td>
-                        <td class="py-[16px] px-[16px] border-b border-x  border-slate-500 text-right">Rs
-                            {{(this.total).toFixed(2)}}</td>
+                        <td class="py-[16px] px-[16px] text-right font-semibold" colspan="4"><p class="text-xl">Sub Total</p></td>
+                        <td class="py-[16px] px-[16px] border-b border-x  border-slate-500 text-right"><p class="text-xl">Rs
+                            {{(this.total).toFixed(2)}}</p></td>
                     </tr>
                     <!--  <tr class="w-[150px]">
                         <td class="py-[16px] px-[16px] text-right font-semibold" colspan="5">Sub Total</td>
@@ -125,28 +126,28 @@
                     </tr> -->
                     <!-- Discount Row -->
                     <tr class="w-[150px]">
-                        <td class="py-[16px] px-[16px] text-right font-semibold" colspan="5">Total Discount</td>
-                        <td class="py-[16px] px-[16px] border-b border-x border-slate-500 text-right ">Rs
-                            {{(this.totalDiscount).toFixed(2)}}</td>
+                        <td class="py-[16px] px-[16px] text-right font-semibold" colspan="5"> <p class="text-xl">Total Discount</p></td>
+                        <td class="py-[16px] px-[16px] border-b border-x border-slate-500 text-right "> <p class="text-xl">Rs
+                            {{(this.totalDiscount).toFixed(2)}}</p></td>
                     </tr>
 
 
 
                     <!-- Paid Amount Row -->
                     <tr class="w-[150px]">
-                        <td class="py-[16px] px-[16px] text-right font-semibold" colspan="5">Advance</td>
-                        <td class="py-[16px] px-[16px] border-b border-x border-slate-500 text-right">Rs {{ (paidAmount
+                        <td class="py-[16px] px-[16px] text-right font-semibold" colspan="5"> <p class="text-xl">Advance</p></td>
+                        <td class="py-[16px] px-[16px] border-b border-x border-slate-500 text-right"><p class="text-xl">Rs {{ (paidAmount
                             ||
-                            0).toFixed(2) }}</td>
+                            0).toFixed(2) }}</p></td>
                     </tr>
 
 
                     <!-- Balance Row -->
                     <tr class=" w-[150px] bg-slate-100">
-                        <td class="py-[16px] px-[16px] text-right font-semibold text-[18px]" colspan="5">Balance</td>
+                        <td class="py-[16px] px-[16px] text-right font-semibold text-[18px]" colspan="5"><p class="text-xl">Balance</p></td>
                         <td
-                            class="py-[16px] px-[16px] border-b border-x border-slate-500 text-right font-semibold text-[18px]">
-                            Rs {{((this.total-(paidAmount||0))).toFixed(2)}}</td>
+                            class="py-[16px] px-[16px] border-b border-x border-slate-500 text-right font-semibold text-[18px]"><p class="text-xl">
+                            Rs {{((this.total-(paidAmount||0))).toFixed(2)}}</p></td>
                     </tr>
                 </tbody>
             </table>
@@ -197,22 +198,22 @@
 
                 </div>
             </div> -->
-            <div class="mt-[30px] flex flex-row justify-between">
+           <div class="mt-[30px] flex flex-row justify-between text-xl">
                 <div class=" font-semibold text-center mt-[30px] pt-[16px] ">
                     <div>------------------------</div>
-                    <div>Prepared By</div>
+                    <div><p class="text-xl">Prepared By</p></div>
                 </div>
                 <div class=" font-semibold text-center mt-[30px] pt-[16px] ">
                     <div>------------------------</div>
-                    <div>Approved By</div>
+                    <div><p class="text-xl">Approved By</p></div>
                 </div>
                 <div class=" font-semibold text-center mt-[30px] pt-[16px] ">
                     <div>------------------------</div>
-                    <div>Received By</div>
+                    <div><p class="text-xl">Received By</p></div>
                 </div>
             </div>
             <p
-                class=" font-semibold text-lg text-center mb-[16px] mt-[100px] flex flex-col items-center justify-center uppercase">
+                class=" font-semibold text-xl text-center mb-[16px] mt-[100px] flex flex-col items-center justify-center uppercase">
                 Thank you!
 
             </p>
