@@ -223,8 +223,8 @@ export class ReportTemplateComponent implements OnChanges {
 
                     const confirmInvoiceOBJ = res.confirmInvoiceOBJ
                     const stockOBJ = res.stockOBJ
-                    const sellingPrice = "Rs " + (res.stockOBJ.sellingPrice).toFixed(2)
-                    const totalAmount = "Rs " + (res.netAmount).toFixed(2)
+                    const sellingPrice =  (res.stockOBJ.sellingPrice).toFixed(2)
+                    const totalAmount =  (res.netAmount).toFixed(2)
                     return [
                         stockOBJ.itemName,
                         res.quantity,

@@ -126,19 +126,19 @@
 
 
 <ng-container *ngIf="inputData.reportType == 'Invoice Reprint' && inputData.result">
-    <div>
+    <div class="">
         <ng-container class="grid">
             <!-- InvoiceTemplate -->
             <div class="">
                 <div
-                class="relative flex flex-row h-[160px] py-[8px] px-[10px] mb-[25px] justify-between gap-[8px]">
-                <div class="flex flex-row gap-[10px] items-center pb-[30px]">
+                class="pb-[80px] relative flex flex-row h-[180px] py-[8px] px-[10px] mb-[25px] justify-between gap-[8px]">
+                <div class="flex flex-row gap-[10px] items-center">
                     <div class="w-[80px] h-[80px]">
                         <img src="../../../assets/logo/logo2.png" alt="company-logo"
                             class="w-full h-full object-contain" />
                     </div>
 
-                    <div class="h-[100px] flex flex-col items-center justify-center mb-[10px]">
+                    <div class="h-[100px] flex flex-col items-center justify-center mb-[10px] font-semibold">
                         <div class="uppercase text-[26px] font-thin">COMFORT LINEN COMPANY (PVT) LTD</div>
                         <div class="text-[20px] pb-[5px]">Manufacturer of quilt & bed Linen</div>
                     </div>
@@ -148,38 +148,38 @@
                 <div class="flex items-center justify-center w-[220px]">
                     <img src="../../../../assets/icons/cherryb.png" alt="cherryb-logo" class="object-contain" />
                 </div>
-                <div class="text-left left-[100px] w-[560px] 
-                      pb-[15px] pt-[15px] justify-center 
-                     items-center absolute bottom-[5px] font-semibold text-sm">
+                <div class="text-left left-[100px] w-[680px] 
+                      pb-[40px] pt-[15px] justify-center 
+                     items-center absolute bottom-[5px] text-[16px]">
 
-                    <div>
-                        Office : #33/24, Hekitta Lane, Wattala | Tel: 011-2985400 |
+                     <div class=""><p class="text-lg font-bold">
+                        Office : #33/24, Hekitta Lane, Wattala | Tel: 011-2985400 |<br>
                         Hot Line: 076-1382156 |Email :
                         info&#64;comfortlinenlk.com | www.cherryb.co
-                    </div>
+                    </p></div>
                 </div>
             </div>
 
 
-            <div class="flex items-center justify-between mb-[30px]">
-                <div class="flex flex-col gap-y-[10px]">
+            <div class="flex flex-row items-center justify-between mb-[30px]">
+                <div class="flex flex-col gap-y-[10px] w-[320px]">
                     <div class="flex flex-row">
-                        <p class="text-[14px] font-semibold">Billed to: </p>
-                        <p class="text-[14px] uppercase"> {{this.inputData?.result?.[0].confirmInvoiceOBJ?.customerOBJ?.custName}}</p>
+                        <p class="text-[20px]">Billed to: </p>
+                        <p class="text-[20px]  font-semibold uppercase"> {{this.inputData?.result?.[0].confirmInvoiceOBJ?.customerOBJ?.custName}}</p>
                     </div>
 
                     <div class="flex flex-row">
-                        <p class="text-[14px] font-semibold">Address: </p>
-                        <p class="text-[14px]">{{this.inputData?.result?.[0].confirmInvoiceOBJ?.customerOBJ?.address}}</p>
+                        <p class="text-[20px]">Address: </p>
+                        <p class="text-[20px]  font-semibold">{{this.inputData?.result?.[0].confirmInvoiceOBJ?.customerOBJ?.address}}</p>
                     </div>
                     <div class="flex flex-row">
-                        <p class="text-[14px] font-semibold">Contact: </p>
-                        <p class="text-[14px]">{{this.inputData?.result?.[0].confirmInvoiceOBJ?.customerOBJ?.contact}}</p>
+                        <p class="text-[20px]">Contact: </p>
+                        <p class="text-[20px]  font-semibold">{{this.inputData?.result?.[0].confirmInvoiceOBJ?.customerOBJ?.contact}}</p>
                     </div>
-                    <div class="flex flex-row">
+                    <!-- <div class="flex flex-row">
                         <p class="text-[14px] font-semibold">Email: </p>
                         <p class="text-[14px]"> {{this.inputData?.result?.[0].confirmInvoiceOBJ?.customerOBJ?.email}}</p>
-                    </div>
+                    </div> -->
 
                 </div>
                 <div class="text-center flex items-center justify-center w-[180px]">
@@ -187,48 +187,48 @@
                 </div>
                 <div class="flex flex-col gap-y-[10px] text-right">
                     <div class="flex flex-row">
-                        <p class="text-[14px]">Invoice No:</p>
-                        <h1 class="text-[14px] font-semibold"> {{this.inputData?.result?.[0].confirmInvoiceOBJ?.invoiceNumberRef}}</h1>
+                        <p class="text-[20px]">Invoice No:</p>
+                        <h1 class="text-[20px] font-semibold">{{this.inputData?.result?.[0].confirmInvoiceOBJ?.invoiceNumberRef}}</h1>
                     </div>
                     <div class="flex flex-row">
-                        <p class="text-[14px]">Invoice Date:</p>
-                        <h1 class="text-[14px] font-semibold">{{getDateForInvoiceRePrint().split("T")[0]}}</h1>
+                        <p class="text-[20px]">Invoice Date:</p>
+                        <h1 class="text-[20px] font-semibold">{{getDateForInvoiceRePrint().split("T")[0]}}</h1>
                     </div>
                     <div class="flex flex-row">
-                        <p class="text-[14px]">Invoice Time:</p>
-                        <h1 class="text-[14px] font-semibold">{{getTime()}}</h1>
+                        <p class="text-[20px]">Invoice Time:</p>
+                        <h1 class="text-[20px] font-semibold">{{getTime()}}</h1>
                     </div>
 
                 </div>
             </div>
                    
-            <table class="w-full text-[25px] relative">
+            <table class="w-full text-base relative">
                 <thead class="bg-slate-100 text-black border border-slate-500 ">
                     <tr>
-                        <th class="py-[16px] px-[5px] w-[40px] text-left">REF</th>
-                        <th class="py-[13px] px-[16px] text-left">DESCRIPTION</th>
-                        <th class="py-[13px] px-[10px] w-[50px] text-left">QTY</th>
-                        <th class="py-[13px] px-[16px] w-[100px] text-left">UNIT PRICE</th>
-                        <th class="py-[13px] px-[5px] w-[40px] text-left">
-                            DISCOUNT
-                        </th>
-                        <th class="py-[13px] px-[16px] w-[150px] text-center">TOTAL</th>
+                        <th class="pb-[20px] w-[40px] text-center"><p class="text-xl">REF</p></th>
+                        <th class="pb-[20px] px-[16px] text-left"><p class="text-xl">DESCRIPTION</p></th>
+                        <th class="pb-[20px] px-[10px] w-[50px] text-left"><p class="text-xl">QTY</p></th>
+                        <th class="pb-[20px] px-[16px] w-[140px] text-center"><p class="text-xl">UNIT PRICE(Rs)</p></th>
+                        <!-- <th class="pb-[20px] px-[5px] w-[40px] text-left"><p class="text-xl">
+                            DISCOUNT</p>
+                        </th> -->
+                        <th class="pb-[20px] px-[16px] w-[150px] text-center"><p class="text-xl">TOTAL(Rs)</p></th>
                     </tr>
                 </thead>
                 
                         <tbody class="font-semibold">
                             <tr *ngFor="let rowData of tableData.tableData ;let i = index"
                         class="border-b border-l border-r border-slate-500">
-                        <td class="py-[16px] px-[5px] border-r text-center border-slate-500">#{{i+1}}</td>
-                        <td class="py-[16px] px-[16px] border-r border-slate-500">{{rowData[0]}}</td>
-                        <td class="py-[16px] px-[5px] w-[40px] text-center border-r border-slate-500">{{rowData[1]}}
+                        <td class="pb-[20px] px-[5px] border-r text-center border-slate-500"><p class="text-xl">{{i+1}}</p></td>
+                        <td class="pb-[20px] px-[16px] border-r border-slate-500"><p class="text-xl">{{rowData[0]}}</p></td>
+                        <td class="pb-[20px] px-[5px] w-[40px] text-center border-r border-slate-500"><p class="text-xl">{{rowData[1]}}</p>
                         </td>
-                        <td class="py-[16px] px-[16px] w-[120px] border-r text-right border-slate-500">
-                            {{(rowData[2])}}</td>
-                        <td class="py-[16px] px-[5px] w-[40px] border-r text-center border-slate-500">
-                            {{(rowData[3])}}</td>
-                        <td class="py-[16px] px-[16px] w-[150px] text-right">
-                            {{(rowData[4])}}</td>
+                        <td class="pb-[20px] px-[16px] w-[140px] border-r text-right border-slate-500"><p class="text-xl">
+                            {{(rowData[2])}}</p></td>
+                        <!-- <td class="py-[16px] px-[5px] w-[40px] border-r text-center border-slate-500">
+                            {{(rowData[3])}}</td> -->
+                            <td class="pb-[20px] px-[16px] w-[150px] text-right"><p class="text-xl">
+                            {{(rowData[4])}}</p></td>
                     </tr>
                             <!-- <tr *ngFor="let rowData of tableData.tableData ;let i = index" class="border-b border-l border-r border-slate-500">
                                 <td class="py-[16px] px-[5px] border-r text-center border-slate-500">#{{i+1}}</td>
@@ -237,18 +237,20 @@
                                 *ngFor="let aRowData of rowData">{{aRowData}}</td>
                             </tr> -->
                             <tr class="">
-                                <td class="h-[120px] w-[50%] absolute left-[100px] my-5 py-[15px] px-[10px] border-black border-y border-x text-left "
-                                    colspan="2">
-                                    <div><b class="font-extrabold">NOTE</b>
+                        
+                                <td class="no-size-limit font-semibold h-[150px] pt-[15px] pb-[20px] mt-[12px] w-[55%] absolute left-[100px]  px-[10px] border-black border-y border-x text-left "
+                                    >
+                                    <div ><p class="text-xl ">NOTE
                                         <br>
                                         Conditions: Payment should be made by crossed cheques payable to
                                         the Account of "Comfort
                                         Linen Co (PVT) LTD."
-                                    </div>
+                                    </p></div>
+                                    
                                 </td>
-                                <td class="py-[16px] px-[16px] text-right font-semibold" colspan="4">Sub Total</td>
-                                <td class="py-[16px] px-[16px] border-b border-x  border-slate-500 text-right">
-                                    {{"Rs "+getTotalNetAmount().toFixed(2)}}</td>
+                                <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="3"><p class="text-xl">Sub Total</p></td>
+                                <td class="pb-[20px] px-[16px] border-b border-x  border-slate-500 text-right"><p class="text-xl">
+                                    {{getTotalNetAmount().toFixed(2)}}</td>
                             </tr>
                             <!--  <tr class="w-[150px]">
                                 <td class="py-[16px] px-[16px] text-right font-semibold" colspan="5">Sub Total</td>
@@ -257,9 +259,9 @@
                             </tr> -->
                             <!-- Discount Row -->
                             <tr class="w-[150px]">
-                                <td class="py-[16px] px-[16px] text-right font-semibold" colspan="5">Total Discount</td>
-                                <td class="py-[16px] px-[16px] border-b border-x border-slate-500 text-right ">
-                                    Rs {{ totalDiscount.toFixed(2) }}
+                                <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="4"> <p class="text-xl">Total Discount</p></td>
+                                <td class="pb-[20px] px-[16px] border-b border-x border-slate-500 text-right "> <p class="text-xl">
+                                    {{ totalDiscount.toFixed(2) }}
                                 </td>
                                 
                             </tr>
@@ -268,96 +270,49 @@
         
                             <!-- Paid Amount Row -->
                             <tr class="w-[150px]">
-                                <td class="py-[16px] px-[16px] text-right font-semibold" colspan="5">Advance</td>
-                                <td class="py-[16px] px-[16px] border-b border-x border-slate-500 text-right">{{"Rs "+(this.inputData?.result?.[0].confirmInvoiceOBJ?.advanceAmount).toFixed(2)}}</td>
+                                <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="4"> <p class="text-xl">Advance</p></td>
+                                <td class="pb-[20px] px-[16px] border-b border-x border-slate-500 text-right"><p class="text-xl"> {{(this.inputData?.result?.[0].confirmInvoiceOBJ?.advanceAmount).toFixed(2)}}</td>
                             </tr>
         
         
                             <!-- Balance Row -->
-                            <tr class=" w-[150px] bg-slate-100">
-                                <td class="py-[16px] px-[16px] text-right font-semibold text-[18px]" colspan="5">Balance</td>
+                            <tr class=" w-[150px] ">
+                                <td class="pb-[20px] px-[16px]" colspan="2"></td>
+                                <td class="bg-slate-100 pb-[20px] px-[16px] text-right font-semibold text-[18px]" colspan="2"><p class="text-xl">Balance</p></td>
                                 <td
-                                    class="py-[16px] px-[16px] border-b border-x border-slate-500 text-right font-semibold text-[18px]">
-                                    {{"Rs "+((getTotalNetAmount()-(this.inputData?.result?.[0].confirmInvoiceOBJ?.advanceAmount)).toFixed(2))}}</td>
+                                    class="bg-slate-100 pb-[20px] px-[16px] border-b border-x border-slate-500 text-right font-semibold text-[18px]"><p class="text-xl">
+                                    {{((getTotalNetAmount()-(this.inputData?.result?.[0].confirmInvoiceOBJ?.advanceAmount)).toFixed(2))}}</td>
                             </tr>
                         </tbody>
                     </table>
-                            <!-- <tr *ngFor="let rowData of tableData.tableData" class="border-b-2">
-                                <td class="py-[16px] px-[16px] w-[100px]"
-                                    [ngClass]="{'w-[100px]': !isItemName(rowData, aRowData)}"
-                                    *ngFor="let aRowData of rowData">{{aRowData}}</td>
-
-                            </tr> -->
-
-                        
-
-                    <!-- <div class="flex flex-col items-end mt-[16px] gap-y-[8px]">
-                        <div class="w-[500px] px-[16px]">
-                            <div class="flex items-baseline justify-between">
-                                <div class="w-[300px] pl-[100px]">
-                                    <p class="text-[14px]">Sub Total:</p>
-                                </div>
-                                <div class="w-[200px] pl-[16px]">
-                                    <p class="text-[14px] text-left">{{"Rs "+getTotalNetAmount().toFixed(2)}}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-[500px] px-[16px]">
-                            <div class="flex items-baseline justify-between">
-                                <div class="w-[300px] pl-[100px]">
-                                    <p class="text-[14px]">Paid Amount:</p>
-                                </div>
-                                <div class="w-[200px] pl-[16px]">
-                                    <p class="text-[14px] text-left">{{"Rs"+(this.inputData?.result?.[0].confirmInvoiceOBJ?.advanceAmount).toFixed(2)}}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                   
-                        <div class="w-[500px] px-[16px]">
-                            <div class="flex items-baseline justify-between">
-                                <div class="w-[300px] pl-[100px]">
-                                    <p class="text-[18px] font-semibold">Balance:</p>
-                                </div>
-                                <div class="w-[200px] pl-[16px]">
-                                    <p class="text-[18px] font-semibold text-left"> {{"Rs"+((getTotalNetAmount()-(this.inputData?.result?.[0].confirmInvoiceOBJ?.advanceAmount)).toFixed(2))}}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
-                    <div class="mt-[30px] flex flex-row justify-between">
+                    <div class="mt-[85px] flex flex-row justify-between text-xl">
                         <div class=" font-semibold text-center mt-[30px] pt-[16px] ">
                             <div>------------------------</div>
-                            <div>Prepared By</div>
+                            <div><p class="text-xl">Prepared By</p></div>
                         </div>
                         <div class=" font-semibold text-center mt-[30px] pt-[16px] ">
                             <div>------------------------</div>
-                            <div>Approved By</div>
+                            <div><p class="text-xl">Approved By</p></div>
                         </div>
                         <div class=" font-semibold text-center mt-[30px] pt-[16px] ">
                             <div>------------------------</div>
-                            <div>Received By</div>
+                            <div><p class="text-xl">Received By</p></div>
                         </div>
                     </div>
-                    <p
-                        class=" font-semibold text-lg text-center mb-[16px] mt-[100px] flex flex-col items-center justify-center uppercase">
-                        Thank you!
+                    <div
+                        class=" font-semibold text-xl text-center mb-[10px] mt-[100px] flex flex-col items-center justify-center uppercase">
+                        <img src="../../../../assets/invoice/thanku.png" class=" h-[20px]" alt="">
         
-                    </p>
+                </div>
         
         
                 </div>
-            
         </ng-container>
 
 
 
 
 
-    </div>
-</ng-container>
 
 <ng-container *ngIf="inputData?.error">
     <h2
