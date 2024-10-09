@@ -5,4 +5,8 @@ body {
   font-family: "Alata", sans-serif;
 
 }
-
+table.w-full th:not(.no-size-limit),
+    table.w-full td:not(.no-size-limit) {
+       
+        height: 0.75cm;
+    }

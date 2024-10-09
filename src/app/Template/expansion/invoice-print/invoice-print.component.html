@@ -1,11 +1,9 @@
 
     <ng-container  *ngIf="productCartItems.length > 0">
     <div class="h-[600px] w-[1100px] flex flex-col gap-[10px]">
-        <div class=" w-[15%] h-[100%] border-r-[1px] ">
-            <mat-dialog-actions align="center" class=" w-full h-full flex flex-row justify-center">
-              
-                <div class="flex flex-row mt-1 gap-[20px] w-[12rem] h-[100%] justify-center items-center ">
-                    <div class="flex flex-row mt-1 gap-[20px] w-[12rem] h-[100%] justify-center items-center " >
+        <div class=" w-[100%] h-[100%] border-r-[1px] ">
+            <mat-dialog-actions align="center" class=" w-full h-full flex flex-row justify-center ">
+              <div class="flex flex-row mt-1 gap-[20px] w-[100%] h-[100%] justify-center items-center " >
                         <button mat-stroked-button color="primary"
                                 class="relative w-full h-[48px] bg-blue-500 text-white rounded flex items-center justify-center"
                                 (click)="completeInvoice()"
@@ -25,10 +23,10 @@
                             <span>Open Email Form</span>
                         </button>
                     </div>               
-                </div>
+              
             </mat-dialog-actions>
         </div>
-        <div class="w-[100%] h-[100%]" >
+        <div class="w-[100%]" >
            
             <app-invoice-template-for-customer id="invoice" [payList]="paymentsList">
             </app-invoice-template-for-customer>
