@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CellClickedEvent, ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import {  ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { AgGridAngular } from 'ag-grid-angular';
 import { Observable } from 'rxjs';
 import { InvoiceActionComponent } from 'src/app/custom-components/action-cell/invoice-action/invoice-action.component';
@@ -14,7 +14,7 @@ import { ActionCellComponent } from 'src/app/custom-components/action-cell/user-
 import { IInvoiceEntity } from '../../../constants/interfaces/IInvoiceEntity';
 import { ProductCartService } from 'src/app/service/productCart-service/product-cart.service';
 import moment from 'moment';
-
+import {CellClickedEvent} from 'ag-grid-community'
 @Component({
     selector: 'app-invoice',
     templateUrl: './invoice.component.html',
@@ -70,6 +70,16 @@ export class InvoiceComponent {
 
         },
         {
+            field: "mainDiscount",
+            colId: "mainDiscount",
+            headerName: "Main Dis",
+            valueFormatter: (params) => {
+                const val = (params.value)
+                return val
+            }, width: 100,
+
+        },
+        {
             field: "customerOBJ",
             colId: "customerOBJ",
             headerName: "Customer",
@@ -102,6 +112,9 @@ export class InvoiceComponent {
             field: "action",
             headerName: "Action",
             cellRenderer: InvoiceActionComponent,
+            cellRendererParams: {
+                getDiscount: (params: any) => params.data.discount, // pass discount value from row data
+            },
             //  width:220
             width: 90
         },
@@ -118,22 +131,29 @@ export class InvoiceComponent {
 
     ) {
         this.getAllCustomerData()
-
+        this.getAllInvoiceData()
     }
 
-
+  
 
 
     onGridReady(param: GridReadyEvent) {
         this.rowData$ = this.getRowData();
         this.gridApi = param?.api
         this.gridApi.sizeColumnsToFit();
+        console.log("Grid is ready", this.gridApi);
+
     }
 
 
     onCellClicked(cellClickedEvent: CellClickedEvent) {
-
+        console.log("onCellClicked event triggered");
+        const cellValue = cellClickedEvent.value;
+        const rowData = cellClickedEvent.data;
+        console.log("Clicked cell value:", cellValue);
+        console.log("Row data:", rowData);
     }
+    
 
     private getRowData(): any {
         return new Promise((resolve) => {
@@ -184,6 +204,12 @@ export class InvoiceComponent {
     getAllCustomerData() {
         this.customerService.getAll().subscribe(res => {
             GLOBAL_LIST.CUSTOMER_DATA = res
+        })
+    }
+
+    getAllInvoiceData() {
+        this.invoiceService.getAll().subscribe(invoiceData => {
+            GLOBAL_LIST.INVOICE_DATA = invoiceData
         })
     }
 

@@ -123,7 +123,7 @@
                     <tr class="w-[150px]">
                         <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="4"> <p class="text-xl">Total Discount</p></td>
                         <td class="pb-[20px] px-[16px] border-b border-x border-slate-500 text-right "> <p class="text-xl">
-                            {{(this.totalDiscount).toFixed(2)}}</p></td>
+                            {{(this.totalDiscount+totalMainDiscount||0).toFixed(2)}}</p></td>
                     </tr>
 
 
@@ -143,7 +143,7 @@
                         <td class="bg-slate-100 pb-[20px] px-[16px] text-right font-semibold text-[18px]" colspan="2"><p class="text-xl">Balance</p></td>
                         <td
                             class="bg-slate-100 pb-[20px] px-[16px] border-b border-x border-slate-500 text-right font-semibold text-[18px]"><p class="text-xl">
-                             {{((this.total-(paidAmount||0))).toFixed(2)}}</p></td>
+                             {{((this.total-(paidAmount||0)-(totalMainDiscount||0))).toFixed(2)}}</p></td>
                     </tr>
                 </tbody>
             </table>

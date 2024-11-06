@@ -27,6 +27,7 @@ import { NotificationService } from 'src/app/service/notification-service/notifi
 import { ActionPopComponent } from 'src/app/custom-components/action-cell/action-pop/action-pop.component';
 import { ToastrService } from 'ngx-toastr';
 import { AdvancePayHistoryComponent } from './advance-pay-history/advance-pay-history.component';
+import { MainDiscountComponent } from './main-discount/main-discount.component';
 
 
 @Component({
@@ -45,7 +46,9 @@ export class SelectedInvoiceComponent implements OnInit {
     // totalNetAmount!: number
     netAmount: number = 0
     paidAmount: number = 0
+    discount: number = 0
     productCartItems: IProCartEntity[] = []
+    invoiceList: IInvoiceEntity[] = []
     rowData$!: Observable<any[]>;
     invoiceData!: IInvoiceEntity[]
     @ViewChild(AgGridAngular)
@@ -95,17 +98,31 @@ export class SelectedInvoiceComponent implements OnInit {
         this.getAllStockAndCategoryData()
         this.getAllInvoiceData();
         this.getAllPayments()
+        
         this.statusUpdateService.tempSalesCartNetAmount$.subscribe(res => {
             this.netAmount = res
         })
+        // debugger
+        if(this.invoiceList.length < 1){
+            this.getTheInvoiceData()
+        }
 
+        this.statusUpdateService.tempSalesCartMainDiscount$.subscribe(res=>{
+            this.discount = res
+        })
 
         if (this.productCartItems.length <= 0) {
             this.getProductCartItemsOfTheInvoiceId()
         }
     }
 
-
+    getTheInvoiceData(){
+        this.invoiceService.getTempInvocieById(this.invoiceId).subscribe(res=>{
+           GLOBAL_LIST.INVOICE_DATA = res.result
+           this.invoiceList = res.result
+           this.statusUpdateService.updateTempSalesDiscount(res.result.mainDiscount)
+        })
+    }
     showInvoiceDetails() {
 
         const invoiceDta = {
@@ -292,6 +309,23 @@ export class SelectedInvoiceComponent implements OnInit {
         openPay.afterClosed().subscribe(res => {
             this.getAllPayments();
         })
+    }
+
+    openDiscount(){
+        console.log("Discount Added!")
+        let totalNetAmount = 0 
+        this.statusUpdateService.tempSalesCartNetAmount$.subscribe(res=>{
+            totalNetAmount = res
+        })
+        const openDiscount = this.matDialog.open(
+            MainDiscountComponent,
+            { data: {netAmount : totalNetAmount, invoiceId: this.invoiceId}   }
+        );
+        openDiscount.afterClosed().subscribe((mainDiscount) => {
+            if (mainDiscount != null) {  // Check if mainDiscount value is returned
+                this.cdr.detectChanges()
+            }
+        });
     }
 
     getAllPayments() {

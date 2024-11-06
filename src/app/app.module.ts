@@ -107,6 +107,7 @@ import { EmailFormComponent } from './Template/createData-forms/email-form/email
 import { RoleGuard } from "./service/role-service/role.guard";
 import { AdvancePayHistoryComponent } from './Template/expansion/selected-invoice/advance-pay-history/advance-pay-history.component';
 import { AdvancePayActionComponent } from './custom-components/action-cell/advance-pay-action/advance-pay-action.component';
+import { MainDiscountComponent } from './Template/expansion/selected-invoice/main-discount/main-discount.component';
 
 @NgModule({
     declarations: [
@@ -177,6 +178,7 @@ import { AdvancePayActionComponent } from './custom-components/action-cell/advan
         EmailFormComponent,
         AdvancePayHistoryComponent,
         AdvancePayActionComponent,
+        MainDiscountComponent,
 
 
 

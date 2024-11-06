@@ -14,6 +14,7 @@ import { IPaymentEntity } from "../../../constants/interfaces/IPaymentEntity";
 
 import { ToastrService } from "ngx-toastr";
 import moment from "moment";
+import { StatusUpdateService } from "src/app/service/sharedServiceForStates/status-update.service";
 
 @Component({
     selector: "app-invoice-template-for-customer",
@@ -33,11 +34,12 @@ export class InvoiceTemplateForCustomerComponent implements OnInit {
     invoiceNumber!: number;
     isComplete!: boolean;
     totalDiscount: number = 0;
+    totalMainDiscount: number = 0;
     constructor(
       
         @Inject(MAT_DIALOG_DATA) public data: any,
         private paymentService: PaymentsService,
-    
+        private statusUpdateService: StatusUpdateService,
         private toastr: ToastrService,
        
     ) {
@@ -96,7 +98,11 @@ export class InvoiceTemplateForCustomerComponent implements OnInit {
     calcValues(list: IProCartEntity[]) {
         this.total = list.reduce(
             (subTotal, item) => subTotal + item.netAmount,0);
-            this.totalDiscount = list.reduce((discountTotal, item) => discountTotal + item.discount, 0); // Calculate total discount
+            this.totalDiscount =  list.reduce((discountTotal, item) => discountTotal + item.discount*item.quantity, 0); // Calculate total discount
+            
+            this.statusUpdateService.tempSalesCartMainDiscount$.subscribe(res=>{
+                this.totalMainDiscount = res
+            })
     }
 
     getInvoiceDate() {

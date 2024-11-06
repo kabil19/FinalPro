@@ -1,0 +1,18 @@
+<!-- <mat-form-field appearance="fill">
+    <mat-label>Fill form field</mat-label>
+    <input matInput placeholder="Placeholder">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    
+  </mat-form-field> -->
+  <mat-dialog-content [formGroup]="discountForm">
+  <mat-form-field>
+    <mat-label>Amount</mat-label>
+    <input formControlName="discountAmount" [formControl]="discountControl" matInput type="number"  placeholder="Enter the amount">
+    <mat-error *ngIf="discountForm.get('discountAmount')?.errors">This field is required!</mat-error>
+</mat-form-field>
+<mat-dialog-actions align="center">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button  [disabled]="!isValidAmount" (click)="addMainDiscount()">Okay</button>
+    <!-- <button mat-button  cdkFocusInitial (click)="payAmount()" disabled="{{!isValid}}">Pay</button> -->
+  </mat-dialog-actions>
+</mat-dialog-content>

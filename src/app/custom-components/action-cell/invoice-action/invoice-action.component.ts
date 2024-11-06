@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { GridApi, ICellRendererParams } from 'ag-grid';
 import { ToastrService } from 'ngx-toastr';
@@ -8,6 +8,7 @@ import { InvoiceFormComponent } from 'src/app/Template/createData-forms/invoice-
 import { AgRendererComponent } from 'ag-grid-angular';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/service/notification-service/notification.service';
+import { StatusUpdateService } from 'src/app/service/sharedServiceForStates/status-update.service';
 
 @Component({
   selector: 'app-invoice-action',
@@ -19,15 +20,16 @@ export class InvoiceActionComponent  {
     params: any;
     dataFromRow: any;
     gridApi: GridApi | any = {};
-    
+    @Input() discount: any; 
 
     constructor(
         private router : Router,
         private toastr : ToastrService,
         public matDialog: MatDialog,
         private invoiceService:InvoiceService,
-        private notificationService:NotificationService
-       
+        private notificationService:NotificationService,
+        private statusUpdateService:StatusUpdateService,
+        private cdr: ChangeDetectorRef,
     ) {
 
     }
@@ -50,7 +52,7 @@ export class InvoiceActionComponent  {
     openSelectedInvoice() {
         const dataString = JSON.stringify(this.params.data);
         this.router.navigate(['/dash_board/invoice/selectedInvoice'], { queryParams: { data: dataString } });
-        
+        this.statusUpdateService.updateTempSalesDiscount(this.params.data.mainDiscount)
     }
     
     openDelDialog(): void {

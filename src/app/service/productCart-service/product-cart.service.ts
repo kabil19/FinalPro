@@ -21,6 +21,11 @@ export class ProductCartService {
     
   }
 
+  addMainDiscount(invoiceId:number, mainDiscount:any){
+    const url = `${this.baseUrl}/addMainDiscount/${invoiceId}`;
+    return this.http.post<any>(url,mainDiscount,{responseType :'json' as 'json'})
+  }
+
   getAll(invoiceId:any):Observable<any>{
     const url = `${this.baseUrl}/getAll/${invoiceId}`;
     return this.http.get<any[]>(url,{responseType:'json'});

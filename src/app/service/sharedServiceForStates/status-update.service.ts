@@ -4,12 +4,14 @@ import { IConfirmInvoiceEntity } from 'src/app/constants/interfaces/IConfirmInvo
 import { IProCartEntity } from 'src/app/constants/interfaces/IProCartEntity';
 import { ITempPurchaseCartEntity } from 'src/app/constants/interfaces/ITempPurchaseCartEntity';
 import { AudioService } from '../audio-service/audio-service.service';
+import { netAmountPattern } from 'src/app/constants/interfaces/VALIDATORS';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StatusUpdateService {
     
+  
     /* 
     Purchase Invoice Cart Related Services and functions
     */
@@ -37,6 +39,8 @@ export class StatusUpdateService {
     private tempSalesCartNetAmountSubject = new BehaviorSubject<number>(0);
     tempSalesCartNetAmount$ = this.tempSalesCartNetAmountSubject.asObservable();
 
+    private tempSalesCartMainDiscountSubject = new BehaviorSubject<number>(0);
+    tempSalesCartMainDiscount$ = this.tempSalesCartMainDiscountSubject.asObservable();
   
     updateTempSalesInvoiceCart(tempSalesCart: IProCartEntity[]) {
       this.tempSalesCartSubject.next(tempSalesCart);
@@ -44,7 +48,14 @@ export class StatusUpdateService {
 
     updateTempSalesNetAmount(tempSalesCart: IProCartEntity[]) {
         const totalNetAmount = tempSalesCart.reduce((sum, item) => sum + item.netAmount, 0);
-        this.tempSalesCartNetAmountSubject.next(totalNetAmount);
+        this.tempSalesCartMainDiscount$.subscribe(res=>{
+            this.tempSalesCartNetAmountSubject.next(totalNetAmount- res);
+        })
       }
    
+    updateTempSalesDiscount(discount:any){
+        this.tempSalesCartMainDiscountSubject.next(discount)
+    }
+
+     
 }
