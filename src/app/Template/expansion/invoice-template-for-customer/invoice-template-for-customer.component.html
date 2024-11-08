@@ -82,9 +82,9 @@
                         <th class="pb-[20px] px-[16px] text-left"><p class="text-xl">DESCRIPTION</p></th>
                         <th class="pb-[20px] px-[10px] w-[50px] text-left"><p class="text-xl">QTY</p></th>
                         <th class="pb-[20px] px-[16px] w-[140px] text-center"><p class="text-xl">UNIT PRICE(Rs)</p></th>
-                        <!-- <th class="pb-[20px] px-[5px] w-[40px] text-left"><p class="text-xl">
-                            DISCOUNT</p>
-                        </th> -->
+                        <th class="pb-[20px] px-[5px] w-[40px] text-center"><p class="text-xl">
+                            UNIT DISCOUNT</p>
+                        </th>
                         <th class="pb-[20px] px-[16px] w-[150px] text-center"><p class="text-xl">TOTAL(Rs)</p></th>
                     </tr>
                 </thead>
@@ -97,8 +97,8 @@
                         </td>
                         <td class="pb-[20px] px-[16px] w-[140px] border-r text-right border-slate-500"><p class="text-xl">
                             {{(item.stockOBJ.sellingPrice).toFixed(2)}}</p></td>
-                       <!--  <td class="pb-[20px] px-[5px] w-[40px] border-r text-center border-slate-500"><p class="text-xl">
-                            {{((item.discount/item.stockOBJ.sellingPrice)*100).toFixed(2)+"%"}}</p></td> -->
+                        <td class="pb-[20px] px-[5px] w-[40px] border-r text-center border-slate-500"><p class="text-xl">
+                            {{((item.discount/item.stockOBJ.sellingPrice)*100).toFixed(2)+"%"}}</p></td>
                         <td class="pb-[20px] px-[16px] w-[150px] text-right"><p class="text-xl">
                             {{(item.netAmount).toFixed(2)}}</p></td>
                     </tr>
@@ -114,23 +114,32 @@
                             </p></div>
                             
                         </td>
-                        <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="3"><p class="text-xl">Sub Total</p></td>
+                        <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="4"><p class="text-xl">Sub Total</p></td>
                         <td class="pb-[20px] px-[16px] border-b border-x  border-slate-500 text-right"><p class="text-xl">
                             {{(this.total).toFixed(2)}}</p></td>
                     </tr>
                     
                     <!-- Discount Row -->
                     <tr class="w-[150px]">
-                        <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="4"> <p class="text-xl">Total Discount</p></td>
+                        <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="5"> <p class="text-xl"> Discount</p></td>
                         <td class="pb-[20px] px-[16px] border-b border-x border-slate-500 text-right "> <p class="text-xl">
-                            {{(this.totalDiscount+totalMainDiscount||0).toFixed(2)}}</p></td>
+                            <!-- {{(this.totalDiscount+totalMainDiscount||0).toFixed(2)}}</p></td> -->
+                            {{(totalMainDiscount||0).toFixed(2)}}</p></td>
+                    </tr>
+
+                    <!-- Gross Amount Row -->
+                    <tr class="w-[150px]">
+                        <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="5"> <p class="text-xl"> Gross Amount</p></td>
+                        <td class="pb-[20px] px-[16px] border-b border-x border-slate-500 text-right "> <p class="text-xl">
+                            <!-- {{(this.totalDiscount+totalMainDiscount||0).toFixed(2)}}</p></td> -->
+                            {{(this.total-totalMainDiscount||0).toFixed(2)}}</p></td>
                     </tr>
 
 
 
                     <!-- Paid Amount Row -->
                     <tr class="w-[150px]">
-                        <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="4"> <p class="text-xl">Advance</p></td>
+                        <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="5"> <p class="text-xl">Advance</p></td>
                         <td class="pb-[20px] px-[16px] border-b border-x border-slate-500 text-right"><p class="text-xl"> {{ (paidAmount
                             ||
                             0).toFixed(2) }}</p></td>
@@ -139,7 +148,7 @@
 
                     <!-- Balance Row -->
                     <tr class=" w-[150px] ">
-                        <td class="pb-[20px] px-[16px]" colspan="2"></td>
+                        <td class="pb-[20px] px-[16px]" colspan="3"></td>
                         <td class="bg-slate-100 pb-[20px] px-[16px] text-right font-semibold text-[18px]" colspan="2"><p class="text-xl">Balance</p></td>
                         <td
                             class="bg-slate-100 pb-[20px] px-[16px] border-b border-x border-slate-500 text-right font-semibold text-[18px]"><p class="text-xl">

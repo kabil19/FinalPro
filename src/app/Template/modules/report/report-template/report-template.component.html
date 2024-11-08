@@ -209,14 +209,14 @@
                         <th class="pb-[20px] px-[16px] text-left"><p class="text-xl">DESCRIPTION</p></th>
                         <th class="pb-[20px] px-[10px] w-[50px] text-left"><p class="text-xl">QTY</p></th>
                         <th class="pb-[20px] px-[16px] w-[140px] text-center"><p class="text-xl">UNIT PRICE(Rs)</p></th>
-                        <!-- <th class="pb-[20px] px-[5px] w-[40px] text-left"><p class="text-xl">
-                            DISCOUNT</p>
-                        </th> -->
+                        <th class="pb-[20px] px-[5px] w-[40px] text-center"><p class="text-xl">
+                            UNIT DISCOUNT</p>
+                        </th>
                         <th class="pb-[20px] px-[16px] w-[150px] text-center"><p class="text-xl">TOTAL(Rs)</p></th>
                     </tr>
                 </thead>
                 
-                        <tbody class="font-semibold">
+                        <tbody class="">
                             <tr *ngFor="let rowData of tableData.tableData ;let i = index"
                         class="border-b border-l border-r border-slate-500">
                         <td class="pb-[20px] px-[5px] border-r text-center border-slate-500"><p class="text-xl">{{i+1}}</p></td>
@@ -225,8 +225,8 @@
                         </td>
                         <td class="pb-[20px] px-[16px] w-[140px] border-r text-right border-slate-500"><p class="text-xl">
                             {{(rowData[2])}}</p></td>
-                        <!-- <td class="py-[16px] px-[5px] w-[40px] border-r text-center border-slate-500">
-                            {{(rowData[3])}}</td> -->
+                        <td class="pb-[20px] px-[5px] w-[40px] border-r text-center border-slate-500"><p class="text-xl">
+                            {{(rowData[3])}}</p></td>
                             <td class="pb-[20px] px-[16px] w-[150px] text-right"><p class="text-xl">
                             {{(rowData[4])}}</p></td>
                     </tr>
@@ -248,7 +248,7 @@
                                     </p></div>
                                     
                                 </td>
-                                <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="3"><p class="text-xl">Sub Total</p></td>
+                                <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="4"><p class="text-xl">Sub Total</p></td>
                                 <td class="pb-[20px] px-[16px] border-b border-x  border-slate-500 text-right"><p class="text-xl">
                                     {{getTotalNetAmount().toFixed(2)}}</td>
                             </tr>
@@ -259,29 +259,36 @@
                             </tr> -->
                             <!-- Discount Row -->
                             <tr class="w-[150px]">
-                                <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="4"> <p class="text-xl">Total Discount</p></td>
+                                <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="5"> <p class="text-xl"> Discount</p></td>
                                 <td class="pb-[20px] px-[16px] border-b border-x border-slate-500 text-right "> <p class="text-xl">
-                                    {{ totalDiscount.toFixed(2) }}
+                                    <!-- {{ ((this.inputData?.result?.[0].discount)*(this.inputData?.result?.[0].quantity)+this.inputData?.result?.[0].confirmInvoiceOBJ?.mainDiscount).toFixed(2) }} -->
+                                    {{ ((this.inputData?.result?.[0].confirmInvoiceOBJ?.mainDiscount)||0).toFixed(2) }}
                                 </td>
                                 
                             </tr>
-        
-        
-        
+         <!-- Gross Amount Row -->
+         <tr class="w-[150px]">
+            <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="5"> <p class="text-xl"> Gross Amount</p></td>
+            <td class="pb-[20px] px-[16px] border-b border-x border-slate-500 text-right "> <p class="text-xl">
+                <!-- {{(this.totalDiscount+totalMainDiscount||0).toFixed(2)}}</p></td> -->
+                {{(getTotalNetAmount()-this.inputData?.result?.[0].confirmInvoiceOBJ?.mainDiscount).toFixed(2)}}</p></td>
+        </tr>
+
+            
                             <!-- Paid Amount Row -->
                             <tr class="w-[150px]">
-                                <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="4"> <p class="text-xl">Advance</p></td>
+                                <td class="pb-[20px] px-[16px] text-right font-semibold" colspan="5"> <p class="text-xl">Advance</p></td>
                                 <td class="pb-[20px] px-[16px] border-b border-x border-slate-500 text-right"><p class="text-xl"> {{(this.inputData?.result?.[0].confirmInvoiceOBJ?.advanceAmount).toFixed(2)}}</td>
                             </tr>
         
         
                             <!-- Balance Row -->
                             <tr class=" w-[150px] ">
-                                <td class="pb-[20px] px-[16px]" colspan="2"></td>
+                                <td class="pb-[20px] px-[16px]" colspan="3"></td>
                                 <td class="bg-slate-100 pb-[20px] px-[16px] text-right font-semibold text-[18px]" colspan="2"><p class="text-xl">Balance</p></td>
                                 <td
                                     class="bg-slate-100 pb-[20px] px-[16px] border-b border-x border-slate-500 text-right font-semibold text-[18px]"><p class="text-xl">
-                                    {{((getTotalNetAmount()-(this.inputData?.result?.[0].confirmInvoiceOBJ?.advanceAmount)).toFixed(2))}}</td>
+                                    {{((getTotalNetAmount()-(this.inputData?.result?.[0].confirmInvoiceOBJ?.advanceAmount)-(this.inputData?.result?.[0].confirmInvoiceOBJ?.mainDiscount)).toFixed(2))}}</td>
                             </tr>
                         </tbody>
                     </table>
