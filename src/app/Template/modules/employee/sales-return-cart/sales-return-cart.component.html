@@ -1,0 +1,23 @@
+
+<div class="justify-center items-center">
+    <div class="user-data-wrapper flex flex-col">
+        <div class="table-cont flex justify-center">
+            <ag-grid-angular class="ag-theme-alpine user-table cursor-pointer" [paginationAutoPageSize]="true"
+                style="margin-bottom: 1rem; height: 50vh; width: 76vw" [rowData]="rowData$ | async"
+                [columnDefs]="columnDef" [rowSelection]="rowSelection" (cellClicked)="onCellClicked($event)"
+                (gridReady)="onGridReady($event)" [pagination]="true">
+            </ag-grid-angular>
+        </div>
+    </div>
+    <div class="flex flex-col mt-1 w-[10rem] h-[30px] justify-center border-solid border-black">
+        <div (click)="confirmReturn()"  class="bg-[#e0d3ff] flex flex-row justify-center items-center text-sm text-center font-semibold rounded-md cursor-pointer h-full w-full" 
+            >
+            <span class="material-symbols-outlined">
+                keyboard_return
+                </span>
+            <span class="text-black">Confirm</span>
+        </div>
+     
+    </div>
+</div>
+

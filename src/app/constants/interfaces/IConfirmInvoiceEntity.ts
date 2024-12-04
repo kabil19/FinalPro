@@ -8,5 +8,6 @@ export interface IConfirmInvoiceEntity{
     customerOBJ:ICustomerEntity,
     isComplete:boolean,
     advanceAmount:number,
-    invoiceNumberRef:string
+    invoiceNumberRef:string,
+    returnAmount:number
 }

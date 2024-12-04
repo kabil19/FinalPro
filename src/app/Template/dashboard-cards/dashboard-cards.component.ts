@@ -70,7 +70,7 @@ export class DashboardCardsComponent implements OnInit {
             imageUrl: "../../assets/New Set/return.png",
             route: "/dash_board/return",
             access: 'user',
-            disabled: true
+            disabled: false
 
         },
         {
@@ -103,9 +103,9 @@ export class DashboardCardsComponent implements OnInit {
     filteredCards = this.Cards;
 
     getUserRole() {
-        console.log("GetUser Role Calles!")
+        // console.log("GetUser Role Calles!")
         const token = localStorage.getItem('token');
-        console.log("GetUser Role Calles!", token)
+        // console.log("GetUser Role Calles!", token)
         this.currentLoggedInUserService.userNameSplit(token);
         this.userRole = this.currentLoggedInUserService.getRole();
         this.filterCards();

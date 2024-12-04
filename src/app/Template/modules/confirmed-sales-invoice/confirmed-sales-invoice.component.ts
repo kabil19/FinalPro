@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmInvoiceService } from 'src/app/service/confirmInvoice-service/confirm-invoice.service';
 import { PaymentActionComponent } from 'src/app/custom-components/action-cell/payment-action/payment-action.component';
-import { InvoiceActionComponent } from 'src/app/custom-components/action-cell/invoice-action/invoice-action.component';
 import moment from 'moment';
 
 
@@ -74,6 +73,16 @@ export class ConfirmedSalesInvoiceComponent {
             field: "paidAmount",
             colId: "paidAmount",
             headerName: "Paid amount",
+            valueFormatter: (params) => {
+                const val = "Rs. " + (params.value.toFixed(2))
+                return val
+            }
+
+        },
+        {
+            field: "returnAmount",
+            colId: "returnAmount",
+            headerName: "Return amount",
             valueFormatter: (params) => {
                 const val = "Rs. " + (params.value.toFixed(2))
                 return val

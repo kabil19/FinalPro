@@ -108,7 +108,7 @@ export class InvoicePaymentComponent implements OnInit {
         const amountInput = this.invoicePaymentForm.get('paidAmount')
         amountInput?.valueChanges.pipe(debounceTime(300)).subscribe((enteredAmount) => {
             this.totalPaidAmount = this.data.paidAmount
-            let balance = this.data.netAmount - this.totalPaidAmount
+            let balance = (this.data.netAmount-this.data.returnAmount) - this.totalPaidAmount
             console.log("balance ", balance)
             if (enteredAmount && (enteredAmount) > balance) {
                 this.toastr.clear()

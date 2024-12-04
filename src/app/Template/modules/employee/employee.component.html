@@ -1,62 +1,35 @@
-
-
-  <div class="tab">
-    <div class="btn-container">
-      <button class="rounded-sm font-semibold bg-purple-400 p-3">Insert
-        <span class="material-symbols-rounded font-semibold">add</span>
-      </button>
-
+<div class="user-data-wrapper flex flex-col">
+    
+        
+    <div class="search-cont -translate-y-4  ">
+     <div class="box">
+         <input type="text" placeholder="DD-MM-YYYY | Customer Name | Invoice No."   (input)="searchDataInRows()" [(ngModel)]="searchCharac">
+             <mat-icon >search</mat-icon>
+             
+     </div>
+   
     </div>
+    
 
-
-    <div class="tab-container bg-purple-200 p-4 flex justify-center content-center items-center m-10 rounded-2xl">
-
-      <table mat-table [dataSource]="dataSource" class="items-center m-5 bg-purple-300 ">
-
-        <ng-container matColumnDef="Id">
-          <th mat-header-cell *matHeaderCellDef> Id</th>
-          <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
-        </ng-container>
-
-
-        <ng-container matColumnDef="FirstName">
-          <th mat-header-cell *matHeaderCellDef> FirstName </th>
-          <td mat-cell *matCellDef="let element"> {{element.FirstName}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="LastName">
-          <th mat-header-cell *matHeaderCellDef> LastName</th>
-          <td mat-cell *matCellDef="let element"> {{element.LastName}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="Email">
-          <th mat-header-cell *matHeaderCellDef> Email </th>
-          <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="Gender">
-          <th mat-header-cell *matHeaderCellDef> Gender </th>
-          <td mat-cell *matCellDef="let element"> {{element.Gender}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="JobTitle">
-          <th mat-header-cell *matHeaderCellDef> JobTitle </th>
-          <td mat-cell *matCellDef="let element"> {{element.JobTitle}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="Action">
-          <th mat-header-cell *matHeaderCellDef> Action </th>
-          <td mat-cell *matCellDef="let element">
-            <span class=" material-symbols-rounded btn p-1 bg-red-400 rounded-2xl cursor-pointer m-2">delete</span>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
-      </table>
-    </div>
-
-  </div>
-
-
+ <div class="table-cont flex justify-center" >
+     <ag-grid-angular 
+     class="ag-theme-alpine user-table cursor-pointer" 
+     [paginationAutoPageSize]="true"
+     style=" height: 58vh; width:76vw;"
+     [rowData]="rowData$ | async" 
+     [columnDefs]="columnDef"
+     [rowSelection]="rowSelection" 
+     [pagination]="true"
+     (cellClicked)="onCellClicked($event)"
+     (cellDoubleClicked)="onCellDoubleClicked($event)"
+     (gridReady)="onGridReady($event)">
+     </ag-grid-angular>
+ </div>
+ 
+ 
+ <!-- <div class="btn-container mb-5 flex flex-row mt-5 gap-6 justify-end mr-5 ">
+ <button mat-raised-button class="rounded-sm font-semibold w-36" color="primary" (click)="insertTrigger()">Invoice
+     <mat-icon>person_add</mat-icon>
+ </button>
+ </div> -->
+</div>

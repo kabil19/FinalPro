@@ -108,6 +108,10 @@ import { RoleGuard } from "./service/role-service/role.guard";
 import { AdvancePayHistoryComponent } from './Template/expansion/selected-invoice/advance-pay-history/advance-pay-history.component';
 import { AdvancePayActionComponent } from './custom-components/action-cell/advance-pay-action/advance-pay-action.component';
 import { MainDiscountComponent } from './Template/expansion/selected-invoice/main-discount/main-discount.component';
+import { ReturnActionComponent } from './custom-components/action-cell/return-action/return-action.component';
+import { SalesReturnCartComponent } from './Template/modules/employee/sales-return-cart/sales-return-cart.component';
+import { MakeReturnCartComponent } from './custom-components/action-cell/make-return-cart/make-return-cart.component';
+import { ReturnFormComponent } from './Template/createData-forms/return-form/return-form.component';
 
 @NgModule({
     declarations: [
@@ -179,6 +183,10 @@ import { MainDiscountComponent } from './Template/expansion/selected-invoice/mai
         AdvancePayHistoryComponent,
         AdvancePayActionComponent,
         MainDiscountComponent,
+        ReturnActionComponent,
+        SalesReturnCartComponent,
+        MakeReturnCartComponent,
+        ReturnFormComponent,
 
 
 
